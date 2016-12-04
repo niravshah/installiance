@@ -9,7 +9,8 @@
     <meta name="author" content="">
     <link rel="icon" href="/images/favicon.ico?v3">
     <title>Installiance</title>
-    <link href="/css/style.css" rel="stylesheet">
+
+
     <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.0/build/pure-min.css">
 
     <!--[if lte IE 8]>
@@ -27,13 +28,15 @@
     <!--[if gt IE 8]><!-->
     <link rel="stylesheet" href="css/layouts/marketing.css">
     <!--<![endif]-->
-
+    <link href="/css/style.css" rel="stylesheet">
 
     {% block css %}{% endblock %}
 </head>
 
 <body>
     {% block content %}{% endblock %}
+    <script src="https://cdn.jsdelivr.net/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/vivus/latest/vivus.min.js"></script>
     {%block scripts%}{% endblock %}
 </body>
 
