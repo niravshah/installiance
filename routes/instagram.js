@@ -1,4 +1,4 @@
-var ig = require('instagram-node').instagram();
+var ig = require('instagramapi').instagram();
 
 module.exports = function (app) {
 
