@@ -21,7 +21,7 @@ module.exports = function (app) {
                     console.log('Error', err);
                     console.log('Medias', medias);
                     console.log(pagination, remaining, limit);
-                    ig.user_self_media_recent({ access_token: result.access_token }, function (err, medias, pagination, remaining, limit) {
+                    ig.user_self_media_recent({},{ access_token: result.access_token }, function (err, medias, pagination, remaining, limit) {
                         console.log('Error', err);
                         console.log('Medias', medias);
                         console.log(pagination, remaining, limit);
