@@ -17,7 +17,7 @@ module.exports = function (app) {
                 res.send("Didn't work");
             } else {
                 console.log('Yay! Access token is ' + result.access_token);
-                ig.user_self([{access_token:result.access_token}],function (err, medias, pagination, remaining, limit) {
+                ig.user_self({access_token:result.access_token},function (err, medias, pagination, remaining, limit) {
                     console.log('Error', err);
                     console.log('Medias', medias);
                     console.log(pagination, remaining, limit);

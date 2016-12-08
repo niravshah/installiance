@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5725914-b8bc-4b30-b8de-df0c3e5f170d" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/instagram.js" afterPath="$PROJECT_DIR$/routes/instagram.js" />
     </list>
     <ignored path="installiance.iws" />
@@ -28,8 +29,8 @@
       <file leaf-file-name="instagram.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/instagram.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="18" column="75" selection-start-line="18" selection-start-column="75" selection-end-line="18" selection-end-column="75" />
+            <state relative-caret-position="399">
+              <caret line="19" column="63" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -38,8 +39,8 @@
       <file leaf-file-name="instagram.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/node_modules/instagramapi/lib/instagram.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="376" column="43" selection-start-line="376" selection-start-column="31" selection-end-line="376" selection-end-column="43" />
+            <state relative-caret-position="152">
+              <caret line="368" column="42" selection-start-line="368" selection-start-column="42" selection-end-line="368" selection-end-column="42" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -783,12 +784,12 @@
       <option name="presentableId" value="Default" />
       <updated>1480851549488</updated>
       <workItem from="1480851554625" duration="5164000" />
-      <workItem from="1481191604668" duration="8619000" />
+      <workItem from="1481191604668" duration="8809000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13783000" />
+    <option name="totallyTimeSpent" value="13973000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
@@ -994,8 +995,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/instagramapi/lib/instagram.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="376" column="43" selection-start-line="376" selection-start-column="31" selection-end-line="376" selection-end-column="43" />
+        <state relative-caret-position="152">
+          <caret line="368" column="42" selection-start-line="368" selection-start-column="42" selection-end-line="368" selection-end-column="42" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -1004,8 +1005,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/instagram.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="18" column="75" selection-start-line="18" selection-start-column="75" selection-end-line="18" selection-end-column="75" />
+        <state relative-caret-position="399">
+          <caret line="19" column="63" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
           <folding />
         </state>
       </provider>
