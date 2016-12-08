@@ -7,7 +7,7 @@ module.exports = function (app) {
     var redirect_uri = 'https://allyx.herokuapp.com/welcome';
 
     app.get('/authorize_user', function (req, res) {
-        res.redirect(ig.get_authorization_url(redirect_uri, { scope: ['likes'], state: 'a state' }));
+        res.redirect(ig.get_authorization_url(redirect_uri, { state: 'a state' }));
     });
 
     app.get('/welcome', function (req, res) {
