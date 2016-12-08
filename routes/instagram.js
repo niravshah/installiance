@@ -17,7 +17,10 @@ module.exports = function (app) {
                 res.send("Didn't work");
             } else {
                 console.log('Yay! Access token is ' + result.access_token);
-                res.send('You made it!!');
+                ig.user_self_feed(function (err, medias, pagination, remaining, limit) {
+                    res.send(medias);
+                });
+
             }
         });
     });
