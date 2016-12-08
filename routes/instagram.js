@@ -19,15 +19,21 @@ module.exports = function (app) {
                 console.log('Yay! Access token is ' + result.access_token);
                 ig.user_self({ access_token: result.access_token }, function (err, medias, pagination, remaining, limit) {
                     console.log('Error', err);
-                    console.log('Medias', medias);
+                    console.log('Self', medias);
                     console.log(pagination, remaining, limit);
-                    ig.user_self_media_recent({},{ access_token: result.access_token }, function (err, medias, pagination, remaining, limit) {
-                        console.log('Error', err);
-                        console.log('Medias', medias);
-                        console.log(pagination, remaining, limit);
-                        res.send(medias);
-                    });
 
+                    ig.user_followers({ access_token: result.access_token }, function (err, medias, pagination, remaining, limit) {
+                        console.log('Error', err);
+                        console.log('Followers', medias);
+                        console.log(pagination, remaining, limit);
+
+                        ig.user_self_media_recent({}, { access_token: result.access_token }, function (err, medias, pagination, remaining, limit) {
+                            console.log('Error', err);
+                            console.log('Medias', medias);
+                            console.log(pagination, remaining, limit);
+                            res.send(medias);
+                        });
+                    });
                 });
 
             }

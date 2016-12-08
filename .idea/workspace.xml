@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a5725914-b8bc-4b30-b8de-df0c3e5f170d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/instagram.js" afterPath="$PROJECT_DIR$/routes/instagram.js" />
     </list>
     <ignored path="installiance.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,23 +47,23 @@
         </entry>
       </file>
       <file leaf-file-name="instagram.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/instagram.js">
+        <entry file="file://$PROJECT_DIR$/node_modules/instagramapi/lib/instagram.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="25" column="52" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="52" />
-              <folding />
+            <state relative-caret-position="26">
+              <caret line="593" column="16" selection-start-line="593" selection-start-column="2" selection-end-line="593" selection-end-column="16" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="instagram.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/node_modules/instagramapi/lib/instagram.js">
+        <entry file="file://$PROJECT_DIR$/routes/instagram.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="605" column="68" selection-start-line="605" selection-start-column="68" selection-end-line="605" selection-end-column="68" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state relative-caret-position="360">
+              <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -804,12 +805,12 @@
       <option name="presentableId" value="Default" />
       <updated>1480851549488</updated>
       <workItem from="1480851554625" duration="5164000" />
-      <workItem from="1481191604668" duration="12516000" />
+      <workItem from="1481191604668" duration="12905000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17680000" />
+    <option name="totallyTimeSpent" value="18069000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
@@ -1029,21 +1030,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/instagram.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="25" column="52" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/instagramapi/lib/instagram.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="605" column="68" selection-start-line="605" selection-start-column="68" selection-end-line="605" selection-end-column="68" />
+        <state relative-caret-position="26">
+          <caret line="593" column="16" selection-start-line="593" selection-start-column="2" selection-end-line="593" selection-end-column="16" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/instagram.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>
