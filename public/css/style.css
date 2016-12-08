@@ -1,8 +1,9 @@
 .splash-container{
 
-    background-image: url('/images/installiance_animated.svg');
+    background-image: url('/images/installiance.svg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
 
 }
+
