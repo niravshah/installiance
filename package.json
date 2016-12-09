@@ -10,6 +10,7 @@
     "angular": "^1.5.8",
     "angular-bootstrap-datetimepicker": "^1.0.1",
     "angular-sanitize": "^1.5.8",
+    "asyncjs": "0.0.10",
     "body-parser": "~1.15.1",
     "bson": "^0.4.23",
     "config-leaf": "^0.3.0",
