@@ -1,7 +1,8 @@
-var ig = require('instagramapi').instagram();
-var async = require('async');
-var mocks = require('./../mocks');
 var _ = require('lodash');
+var async = require('async');
+var gauss = require('gauss');
+var ig = require('instagramapi').instagram();
+var mocks = require('./../mocks');
 
 module.exports = function (app) {
 
@@ -90,15 +91,30 @@ module.exports = function (app) {
         var followed_by = results[0].counts.followed_by;
         if (followed_by > follows) {
 
-            var sorted_medias = _.orderBy(results[1], 'likes.count', 'desc');
+            var result_medias = _.chain(results[1])
+                .orderBy(['likes.count', 'comments.count'], ['desc', 'desc'])
+                .map(function (value) {
+                    var newMedia = {};
+                    newMedia.img = value.images.low_resolution.url;
+                    newMedia.likes = value.likes.count;
+                    newMedia.tags = value.tags;
+                    newMedia.comments = value.comments.count;
+                    return newMedia
+                })
+                .values();
+
+            /*var sorted_medias = _.orderBy(results[1], ['likes.count', 'comments.count'], ['desc', 'desc']);
             var result_medias = [];
+            var tags = new gauss.Collection();
             _.forEach(sorted_medias, function (value) {
                 var newMedia = {};
                 newMedia.img = value.images.low_resolution.url;
                 newMedia.likes = value.likes.count;
                 newMedia.tags = value.tags;
+                newMedia.comments = value.comments.count;
+                tags.add(value.tags);
                 result_medias.push(newMedia);
-            });
+            });*/
 
             cb(true, result_medias);
         }
