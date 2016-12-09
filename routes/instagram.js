@@ -3,6 +3,8 @@ var async = require('async');
 var async = require('async');
 var ig = require('instagramapi').instagram();
 var mocks = require('./../mocks');
+var Stats = require('./../models/user_stats');
+var shortid = require('shortid');
 
 module.exports = function (app) {
 
@@ -121,8 +123,30 @@ module.exports = function (app) {
                 }
             });
 
-            cb(true, {tags: all_tags, tag_freq: tag_freq, likes: likes});
+            saveUserStats(results[0], all_tags, tag_freq, likes);
+            cb(true, { tags: all_tags, tag_freq: tag_freq, likes: likes });
+        } else {
+            cb(false, null);
         }
+    }
+
+    function saveUserStats(userinfo, all_tags, tag_freq, likes) {
+
+        new Stats({
+            shortid: shortid.generate(),
+            instagram_id:userinfo.id,
+            full_name: userinfo.full_name,
+            profile_picture: userinfo.profile_picture,
+            counts: userinfo.counts,
+            timestamp: new Date(),
+            all_tags: all_tags,
+            tag_freq: tag_freq,
+            likes: likes
+        }).save(function (err, stats) {
+            if (err) {
+                console.log('Error', err);
+            }
+        });
     }
 
     app.get('/mocktest', function (req, res) {
