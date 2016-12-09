@@ -57,7 +57,7 @@ module.exports = [
         }
     }, {
         "attribution": null,
-        "tags": [],
+        "tags": ["#mumbai","#london"],
         "type": "image",
         "location": { "latitude": 43.7167, "name": "Pisa, Italy", "longitude": 10.3833, "id": 213105555 },
         "comments": { "count": 1 },
@@ -94,7 +94,7 @@ module.exports = [
         }
     }, {
         "attribution": null,
-        "tags": [],
+        "tags": ["#mumbai", "#london"],
         "type": "image",
         "location": {
             "latitude": 45.434115549131,

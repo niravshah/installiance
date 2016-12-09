@@ -91,32 +91,39 @@ module.exports = function (app) {
         var followed_by = results[0].counts.followed_by;
         if (followed_by > follows) {
 
-            var result_medias = _.chain(results[1])
-                .orderBy(['likes.count', 'comments.count'], ['desc', 'desc'])
-                .map(function (value) {
-                    var newMedia = {};
-                    newMedia.img = value.images.low_resolution.url;
-                    newMedia.likes = value.likes.count;
-                    newMedia.tags = value.tags;
-                    newMedia.comments = value.comments.count;
-                    return newMedia
+            var likes =
+                _.chain(results[1])
+                    .orderBy(['likes.count', 'comments.count'], ['desc', 'desc'])
+                    .map(function (value) {
+                        var newMedia = {};
+                        newMedia.img = value.images.low_resolution.url;
+                        newMedia.likes = value.likes.count;
+                        newMedia.tags = value.tags;
+                        newMedia.comments = value.comments.count;
+                        return newMedia
+                    })
+                    .value();
+
+            var all_tags = _.chain(likes)
+                .filter(function (val) {
+                    return val.tags.length > 0;
                 })
-                .values();
+                .flatMap('tags')
+                .value();
 
-            /*var sorted_medias = _.orderBy(results[1], ['likes.count', 'comments.count'], ['desc', 'desc']);
-             var result_medias = [];
-             _.forEach(sorted_medias, function (value) {
-             var newMedia = {};
-             newMedia.img = value.images.low_resolution.url;
-             newMedia.likes = value.likes.count;
-             newMedia.tags = value.tags;
-             newMedia.comments = value.comments.count;
-             result_medias.push(newMedia);
-             });*/
+            var tag_freq = {};
 
-            cb(true, result_medias);
+            _.each(all_tags, function (tag) {
+                if (tag_freq[tag]) {
+                    tag_freq[tag]++
+                } else {
+                    tag_freq[tag] = 1
+                }
+            });
+
+            cb(true, {tags: all_tags, tag_freq: tag_freq, likes: likes});
         }
-    };
+    }
 
     app.get('/mocktest', function (req, res) {
 
