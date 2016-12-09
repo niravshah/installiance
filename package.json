@@ -21,6 +21,7 @@
     "instagram-node": "^0.5.8",
     "instagramapi": "^2.0.0",
     "jsonwebtoken": "^7.0.1",
+    "lodash": "^4.17.2",
     "mongo-express": "^0.30.59",
     "mongoose": "^4.5.3",
     "morgan": "~1.7.0",
