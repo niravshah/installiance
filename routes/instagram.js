@@ -66,8 +66,8 @@ module.exports = function (app) {
                                                   })
                                    } else {
 
-                                       var follows = result[0].data.counts.follows;
-                                       var followed_by = result[0].data.counts.followed_by;
+                                       var follows = result[0].counts.follows;
+                                       var followed_by = result[0].counts.followed_by;
                                        if (followed_by > follows) {
                                            res.render('successful');
                                        } else {
