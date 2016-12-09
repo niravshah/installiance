@@ -39,8 +39,7 @@ module.exports = function (app) {
                                                     });
                                    },
                                    function (cb) {
-                                       ig.user_self_media_recent(
-                                           {access_token: result.access_token},
+                                       ig.user_self_media_recent({access_token: result.access_token},
                                            function (err, userInfo, pagination, remaining,
                                                      limit) {
                                                console.log('Error', err);
@@ -54,7 +53,7 @@ module.exports = function (app) {
                                    if (err) {
                                        res.render('error',
                                                   {
-                                                      message: 'There was an error retreiving your details from Instagram',
+                                                      message: 'There was an error retrieving your details from Instagram',
                                                       details: err
                                                   })
 
@@ -72,7 +71,7 @@ module.exports = function (app) {
                                        if (followed_by > follows) {
                                            res.render('successful');
                                        } else {
-                                           res.render('unsuccesful');
+                                           res.render('unsuccessful');
                                        }
 
                                    }
