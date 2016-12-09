@@ -72,8 +72,8 @@ module.exports = function (app) {
                                 })
                         } else {
 
-                            var follows = result[0].counts.follows;
-                            var followed_by = result[0].counts.followed_by;
+                            var follows = results[0].counts.follows;
+                            var followed_by = results[0].counts.followed_by;
                             console.log(follows, followed_by);
                             if (followed_by > follows) {
                                 console.log("Returning Successful");
