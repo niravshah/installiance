@@ -1,5 +1,5 @@
 var ig = require('instagramapi').instagram();
-var async = require('asyncjs');
+var async = require('async');
 module.exports = function (app) {
 
     ig.use({
