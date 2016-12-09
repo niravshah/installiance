@@ -39,7 +39,7 @@ module.exports = function (app) {
                                                     });
                                    },
                                    function (cb) {
-                                       ig.user_self_media_recent({access_token: result.access_token},
+                                       ig.user_self_media_recent({},{access_token: result.access_token},
                                            function (err, userInfo, pagination, remaining,
                                                      limit) {
                                                console.log('Error', err);
