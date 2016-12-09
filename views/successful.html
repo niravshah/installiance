@@ -2,5 +2,7 @@
 
 {% block content %}
 <p>Welcome! Your application has been successful</p>
-<div>{{medias|json}}</div>
+
+{{medias|json(4)}}
+
 {% endblock %}

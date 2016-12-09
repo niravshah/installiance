@@ -1,4 +1,4 @@
-[
+module.exports = [
     {
         username: 'nirav_shah',
         bio: '',
@@ -815,3 +815,4 @@
         }
     }]
 ]
+

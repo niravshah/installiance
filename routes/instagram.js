@@ -1,6 +1,7 @@
 var ig = require('instagramapi').instagram();
 var async = require('async');
-var mocks = require('./mocks');
+var mocks = require('./../mocks');
+var _ = require('lodash');
 
 module.exports = function (app) {
 
@@ -69,10 +70,10 @@ module.exports = function (app) {
                                 })
                         } else {
 
-                            isUserInfluencer(results, function (result) {
+                            isUserInfluencer(results, function (result, media) {
                                 if (result === true) {
                                     console.log("Returning Successful");
-                                    res.render('successful', { medias: results[1] });
+                                    res.render('successful', { medias: media });
                                 } else {
                                     console.log("Returning Unsuccessful");
                                     res.render('unsuccessful');
@@ -88,17 +89,28 @@ module.exports = function (app) {
         var follows = results[0].counts.follows;
         var followed_by = results[0].counts.followed_by;
         if (followed_by > follows) {
-            cb(true);
+
+            var sorted_medias = _.orderBy(results[1], 'likes.count', 'desc');
+            var result_medias = [];
+            _.forEach(sorted_medias, function (value) {
+                var newMedia = {};
+                newMedia.img = value.images.low_resolution.url;
+                newMedia.likes = value.likes.count;
+                newMedia.tags = value.tags;
+                result_medias.push(newMedia);
+            });
+
+            cb(true, result_medias);
         }
     };
 
     app.get('/mocktest', function (req, res) {
 
         var results = mocks;
-        isUserInfluencer(results, function (result) {
+        isUserInfluencer(results, function (result, media) {
             if (result === true) {
                 console.log("Returning Successful");
-                res.render('successful', { medias: results[1] });
+                res.json(media);
             } else {
                 console.log("Returning Unsuccessful");
                 res.render('unsuccessful');
