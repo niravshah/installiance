@@ -1,6 +1,6 @@
 var _ = require('lodash');
 var async = require('async');
-var gauss = require('gauss');
+var async = require('async');
 var ig = require('instagramapi').instagram();
 var mocks = require('./../mocks');
 
@@ -104,17 +104,15 @@ module.exports = function (app) {
                 .values();
 
             /*var sorted_medias = _.orderBy(results[1], ['likes.count', 'comments.count'], ['desc', 'desc']);
-            var result_medias = [];
-            var tags = new gauss.Collection();
-            _.forEach(sorted_medias, function (value) {
-                var newMedia = {};
-                newMedia.img = value.images.low_resolution.url;
-                newMedia.likes = value.likes.count;
-                newMedia.tags = value.tags;
-                newMedia.comments = value.comments.count;
-                tags.add(value.tags);
-                result_medias.push(newMedia);
-            });*/
+             var result_medias = [];
+             _.forEach(sorted_medias, function (value) {
+             var newMedia = {};
+             newMedia.img = value.images.low_resolution.url;
+             newMedia.likes = value.likes.count;
+             newMedia.tags = value.tags;
+             newMedia.comments = value.comments.count;
+             result_medias.push(newMedia);
+             });*/
 
             cb(true, result_medias);
         }
