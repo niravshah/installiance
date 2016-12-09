@@ -49,6 +49,7 @@ module.exports = function (app) {
                                            });
                                    }],
                                function (err, results) {
+                                   console.log(err, results);
 
                                    if (err) {
                                        res.render('error',
@@ -68,9 +69,12 @@ module.exports = function (app) {
 
                                        var follows = result[0].counts.follows;
                                        var followed_by = result[0].counts.followed_by;
+                                       console.log(follows, followed_by);
                                        if (followed_by > follows) {
+                                           console.log("Returning Successful");
                                            res.render('successful');
                                        } else {
+                                           console.log("Returning Unsuccessful");
                                            res.render('unsuccessful');
                                        }
 
