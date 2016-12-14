@@ -39,8 +39,8 @@ module.exports = function (app, config) {
                                 function (err, userInfo, pagination, remaining,
                                           limit) {
                                     console.log('Error', err);
-                                    console.log('Self', userInfo);
-                                    console.log(pagination, remaining, limit);
+                                    //console.log('Self', userInfo);
+                                    //console.log(pagination, remaining, limit);
                                     cb(err, userInfo);
                                 });
                         },
@@ -49,8 +49,8 @@ module.exports = function (app, config) {
                                 function (err, userInfo, pagination, remaining,
                                           limit) {
                                     console.log('Error', err);
-                                    console.log('Self', userInfo);
-                                    console.log(pagination, remaining, limit);
+                                    //console.log('Self', userInfo);
+                                    //console.log(pagination, remaining, limit);
                                     cb(err, userInfo);
                                 });
                         }],
@@ -142,7 +142,7 @@ module.exports = function (app, config) {
             if (err) {
                 console.log('Error', err);
             }else{
-                console.log(stats)
+                console.log('User Stats Saved!')
             }
         });
     }
