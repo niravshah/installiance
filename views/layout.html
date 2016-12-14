@@ -8,20 +8,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="/images/favicon.ico?v3">
-    <title>Installiance</title>
-
-
+    <title>Influence Ally</title>
     <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.0/build/pure-min.css">
-
     <!--[if lte IE 8]>
     <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.0/build/grids-responsive-old-ie-min.css">
     <![endif]-->
     <!--[if gt IE 8]><!-->
     <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.0/build/grids-responsive-min.css">
     <!--<![endif]-->
-
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <!--[if lte IE 8]>
     <link rel="stylesheet" href="css/layouts/marketing-old-ie.css">
     <![endif]-->
@@ -34,10 +29,20 @@
 </head>
 
 <body>
-    {% block content %}{% endblock %}
-    <script src="https://cdn.jsdelivr.net/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/vivus/latest/vivus.min.js"></script>
-    {%block scripts%}{% endblock %}
+<div class="header">
+    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+        <a class="pure-menu-heading" href="">Your Site</a>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Home</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Tour</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sign Up</a></li>
+        </ul>
+    </div>
+</div>
+{% block content %}{% endblock %}
+<script src="https://cdn.jsdelivr.net/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/vivus/latest/vivus.min.js"></script>
+{%block scripts%}{% endblock %}
 </body>
 
 </html>

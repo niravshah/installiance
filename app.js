@@ -36,7 +36,7 @@ var passport = require('passport');
 app.use(passport.initialize());
 
 require('./routes/passport/init')(passport);
-require('./routes/instagram')(app);
+require('./routes/instagram')(app, config);
 
 require('./routes/login')(app);
 

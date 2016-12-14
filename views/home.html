@@ -1,22 +1,5 @@
 {% extends 'layout.html' %}
-
-{% block css%}
-{% endblock %}
-
 {% block content %}
-<div class="header">
-    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
-        <a class="pure-menu-heading" href="">Your Site</a>
-
-        <ul class="pure-menu-list">
-            <li class="pure-menu-item pure-menu-selected"><a href="#"
-                                                             class="pure-menu-link">Home</a></li>
-            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Tour</a></li>
-            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sign Up</a></li>
-        </ul>
-    </div>
-</div>
-
 <div class="splash-container">
     <div class="splash">
         <h1 class="splash-head">Big Bold Text</h1>
@@ -24,19 +7,15 @@
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </p>
         <p>
-            <a href="http://purecss.io" class="pure-button pure-button-primary">Get Started</a>
+            <a href="/authorize_user" class="pure-button pure-button-primary">Login with Instagram</a>
         </p>
     </div>
 </div>
-
 <div class="content-wrapper">
     <div class="content">
-
         <h2 class="content-head is-center">Excepteur sint occaecat cupidatat.</h2>
-
         <div class="pure-g">
             <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-
                 <h3 class="content-subhead">
                     <i class="fa fa-rocket"></i>
                     Get Started Quickly
@@ -78,7 +57,6 @@
             </div>
         </div>
     </div>
-
     <div class="ribbon l-box-lrg pure-g">
         <div class="l-box-lrg is-center pure-u-1 pure-u-md-1-2 pure-u-lg-2-5">
             <!--img width="300" alt="File Icons" class="pure-img-responsive"
@@ -96,10 +74,8 @@
             </p>
         </div>
     </div>
-
     <div class="content">
         <h2 class="content-head is-center">Dolore magna aliqua. Uis aute irure.</h2>
-
         <div class="pure-g">
             <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
                 <form class="pure-form pure-form-stacked">
@@ -136,15 +112,12 @@
                 </p>
             </div>
         </div>
-
     </div>
-
     <div class="footer l-box is-center">
         View the source of this layout to learn more. Made with love by the YUI Team.
     </div>
-
 </div>
 {% endblock %}
 
-{% block scripts %}
+{%block scripts%}
 {% endblock %}
