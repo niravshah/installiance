@@ -1,7 +1,7 @@
 var config = [];
 
 config['dev'] = {
-    mongoUrl: 'mongodb://localhost/engageapp',
+    mongoUrl: 'mongodb://localhost/installiance',
     followed_by_count: 50
 };
 
