@@ -7,11 +7,11 @@ var userStats = new Schema({
     profile_picture: { type: String, required: true },
     email: { type: String },
     password: { type: String },
-    counts: { type: Mixed, required: true },
+    counts: { type: Schema.Types.Mixed, required: true },
     timestamp: { type: Date },
-    all_tags: { type: Mixed },
-    tag_freq: { type: Mixed },
-    likes: { type: Mixed }
+    all_tags: { type: Schema.Types.Mixed },
+    tag_freq: { type: Schema.Types.Mixed },
+    likes: { type: Schema.Types.Mixed }
 });
 
 module.exports = mongoose.model('UserStats', userStats);
