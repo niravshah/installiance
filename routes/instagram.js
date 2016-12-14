@@ -6,7 +6,7 @@ var mocks = require('./../mocks');
 var Stats = require('./../models/user_stats');
 var shortid = require('shortid');
 
-module.exports = function (app) {
+module.exports = function (app, config) {
 
     ig.use({
         client_id: 'e942353eeb2f4c4eb38d5ce059ee5b35',
@@ -62,9 +62,7 @@ module.exports = function (app) {
                                     message: 'There was an error retrieving your details from Instagram',
                                     details: err
                                 })
-
                         }
-
                         if (results.length < 2) {
                             res.render('error',
                                 {
@@ -72,7 +70,6 @@ module.exports = function (app) {
                                     details: ''
                                 })
                         } else {
-
                             isUserInfluencer(results, function (result, media) {
                                 if (result === true) {
                                     console.log("Returning Successful");
@@ -91,8 +88,7 @@ module.exports = function (app) {
     function isUserInfluencer(results, cb) {
         var follows = results[0].counts.follows;
         var followed_by = results[0].counts.followed_by;
-        if (followed_by > follows) {
-
+        if (followed_by > follows && followed_by > config.followed_by_count) {
             var likes =
                 _.chain(results[1])
                     .orderBy(['likes.count', 'comments.count'], ['desc', 'desc'])
