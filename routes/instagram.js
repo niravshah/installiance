@@ -153,7 +153,7 @@ module.exports = function (app, config) {
         isUserInfluencer(results, function (result, media) {
             if (result === true) {
                 console.log("Returning Successful");
-                res.json(media);
+                res.render('successful', { medias: media });
             } else {
                 console.log("Returning Unsuccessful");
                 res.render('unsuccessful');
