@@ -7,8 +7,4 @@ module.exports = function (app) {
         res.render('login');
     });
 
-    app.get('/welcome', function (req, res) {
-        res.render('home');
-    });
-
 };
