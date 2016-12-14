@@ -1,28 +1,29 @@
 {% extends 'layout.html' %} {% block content %}
-<div id="wrap" class="animsition" ng-app="engageLoginApp">
-    <div class="page page-core page-login">
-        <div class="text-center">
-            <img src="/img/logo_160_160.png">
-        </div>
-        <div class="container w-420 p-15 bg-white mt-40 text-center" ng-controller="LoginController">
-            <h2 class="text-light text-yellow1">Log In</h2>
-            <p>{[{message}]}</p>
-            
-            <form name="form" class="form-validation mt-20" novalidate="">
-                <div class="form-group">
-                    <input ng-model="email" type="email" class="form-control underline-input" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <input eg-enter="controllerLogin()" ng-model="password" type="password" placeholder="Password" class="form-control underline-input">
-                </div>
-                <div class="form-group text-center mt-20">
-                    <a href="#login" ng-click="controllerLogin()" class="btn btn-lg btn-yellow1 b-0 br-2 mr-5">Login</a>
-                </div>
-            </form>
+<div class="content-wrapper">
+    <div class="content">
+
+        <h2 class="content-head is-center">Excepteur sint occaecat cupidatat.</h2>
+
+        <div class="pure-g">
+            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+
+                <h3 class="content-subhead">
+                    <i class="fa fa-rocket"></i>
+                    Get Started Quickly
+                </h3>
+                <p>
+                    Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales
+                    pellentesque elementum.
+                </p>
+            </div>
         </div>
     </div>
+
+
+    <div class="footer l-box is-center">
+        View the source of this layout to learn more. Made with love by the YUI Team.
+    </div>
+
 </div>
 {% endblock %} {%block scripts%}
-<script type="text/javascript" src="/angular/loginApp.js"></script>
-<script type="text/javascript" src="/angular/directives/egOnEnterKeyUp.js"></script>
 {% endblock %}

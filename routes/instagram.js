@@ -141,6 +141,8 @@ module.exports = function (app, config) {
         }).save(function (err, stats) {
             if (err) {
                 console.log('Error', err);
+            }else{
+                console.log(stats)
             }
         });
     }
