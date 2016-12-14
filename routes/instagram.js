@@ -25,7 +25,7 @@ module.exports = function (app, config) {
     app.get('/welcome', function (req, res) {
         ig.authorize_user(req.query.code, redirect_uri, function (err, result) {
             if (err) {
-                console.log(err.body);
+                console.log(err);
                 res.render('error', {
                     message: "We could not authorize your request with Instagram!",
                     details: err.body
