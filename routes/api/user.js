@@ -10,7 +10,7 @@ module.exports = function (app, config) {
                 resp.status(500).json({ err: err, user: user });
             } else {
                 if (config.emails === true) {
-                    emailer.registration(user.email, user.emailVerificationToken);
+                    emailer.registration(user.email, user.emailVerificationToken, user.password);
                 }
                 resp.json({ err: err, user: user });
             }

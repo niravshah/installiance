@@ -7,12 +7,11 @@ var path = require('path');
 var templateDir = path.join(__dirname, 'templates', 'welcome-email');
 var welcome = new EmailTemplate(templateDir);
 
-
 module.exports = {
 
-    registration: function (toEmail, token) {
+    registration: function (toEmail, token, password) {
 
-        var locals = { token: token };
+        var locals = { token: token, loginId: toEmail, password: password };
 
         welcome.render(locals, function (err, result) {
 
@@ -22,7 +21,7 @@ module.exports = {
 
             transporter.sendMail({
                 from: '"Influence Ally"<info@influenceally.com>',
-                subject: 'Activate Your Account',
+                subject: 'Confirm Email Address',
                 to: toEmail,
                 html: result.html,
                 text: result.text
