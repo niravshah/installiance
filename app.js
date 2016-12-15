@@ -13,8 +13,7 @@ mongoose.connect(config.mongoUrl);
 
 var path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/angular', express.static(path.join(__dirname, 'angular')));
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/scripts/', express.static(__dirname + '/node_modules/'));
 
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
