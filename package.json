@@ -29,6 +29,8 @@
     "mongo-express": "^0.30.59",
     "mongoose": "^4.5.3",
     "morgan": "~1.7.0",
+    "nodemailer": "^2.7.0",
+    "nodemailer-sendinblue-transport": "^1.2.3",
     "passport": "^0.3.2",
     "passport-jwt": "^2.1.0",
     "passport-local": "^1.0.0",
