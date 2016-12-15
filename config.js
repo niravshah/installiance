@@ -3,7 +3,7 @@ var config = [];
 config['dev'] = {
     mongoUrl: 'mongodb://localhost/installiance',
     followed_by_count: 50,
-    emails:false
+    emails:true
 };
 
 config['production'] = {
