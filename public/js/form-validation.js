@@ -30,7 +30,7 @@ $(function () {
                         .append("<p>someone</p>")
                         .hide()
                         .fadeIn(1500, function () {
-                            $('#message').append("<img id='checkmark' src='/    images/ok.png' />");
+                            $('#message').append("<img id='checkmark' src='/images/ok.png' />");
                         });
                 },
                 error:function(xhr, error,thrownError){

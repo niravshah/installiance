@@ -1,6 +1,5 @@
 var _ = require('lodash');
 var async = require('async');
-var async = require('async');
 var ig = require('instagramapi').instagram();
 var mocks = require('./../mocks');
 var Stats = require('./../models/user_stats');

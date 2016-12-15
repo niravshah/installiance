@@ -36,8 +36,8 @@ app.use(passport.initialize());
 
 require('./routes/passport/init')(passport);
 require('./routes/instagram')(app, config);
-
 require('./routes/login')(app);
+require('./routes/api/user')(app);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -67,6 +67,6 @@ if (env === 'dev') {
 
 app.set('port', (process.env.PORT || 12000));
 
-app.listen(app.get('port'), function() {
+app.listen(app.get('port'), function () {
     console.log('Node app is running on port', app.get('port'));
 });
