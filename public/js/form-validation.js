@@ -3,7 +3,7 @@ $(function () {
     $("form[name='registration']").validate({
         // Specify validation rules
         rules: {
-            password:{
+            password: {
                 required: true
             },
             email: {
@@ -19,27 +19,27 @@ $(function () {
         // in the "action" attribute of the form when valid
         submitHandler: function (form) {
             var shortid = $('#onboard-btn').data('shortid');
-            var url = '/api/user/'+shortid + '/email';
+            var url = '/api/user/' + shortid + '/email';
             $.ajax({
                 type: "POST",
                 url: url,
                 data: $(form).serialize(),
                 success: function () {
                     $(form).html("<div id='message'></div>");
-                    $('#message').html("<h2>Your request is on the way!</h2>")
-                        .append("<p>someone</p>")
+                    $('#message').html("<h2>Your details have been updated!</h2>")
+                        .append("<p>An email has been sent to you with your login details</p>")
                         .hide()
                         .fadeIn(1500, function () {
-                            $('#message').append("<img id='checkmark' src='/images/ok.png' />");
+                            $('#message').append("<img class='ajaxReturnImage' src='/images/ok.png' />");
                         });
                 },
-                error:function(xhr, error,thrownError){
+                error: function (xhr, error, thrownError) {
                     $(form).html("<div id='message'></div>");
                     $('#message').html("<h2 class='error'>" + thrownError + "</h2>")
                         .append("<p>" + xhr.responseJSON.errorMessage + "</p>")
                         .hide()
                         .fadeIn(1500, function () {
-                            $('#message').append("<img id='checkmark' src='/images/cross.png' />");
+                            $('#message').append("<img class='ajaxReturnImage' src='/images/cross.png' />");
                         });
                 }
             });
@@ -48,7 +48,7 @@ $(function () {
         invalidHandler: function (event, validator) {
             var errors = validator.numberOfInvalids();
             if (errors) {
-                console.log('Errors:',errors);
+                console.log('Errors:', errors);
             }
         }
     });
