@@ -1,9 +1,12 @@
-.splash-container{
-
+.splash-container {
     background-image: url('/images/installiance.svg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-
 }
 
+.error {
+    color: rgba(160, 0, 0, 0.77);
+    font-weight: 100;
+    font-size: 90%;
+}
