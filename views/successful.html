@@ -11,8 +11,8 @@
                 <form name="registration" class="pure-form pure-form-stacked">
                     <fieldset>
                         <label for="email">Enter Your Email to Onboard</label>
-                        <input id="email" type="email" placeholder="Your Email">
-                        <button id="onboardBtn" data-id="{{medias.shortid}}" class="md-mt-20 pure-button">Onboard</button>
+                        <input name="email" id="email" type="email">
+                        <button data-shortid={{medias.shortid}} id="onboard-btn" type="submit" class="md-mt-20 pure-button">Onboard</button>
                     </fieldset>
                 </form>
             </div>
@@ -24,14 +24,4 @@
 {%block scripts%}
 <script src="/scripts/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="/js/form-validation.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#onboardBtn').click(function () {
-            var popID = $(this).attr('data-id');
-            console.log(popID);
-            return false; // prevent default
-        });
-    });
-</script>
-
 {% endblock %}
