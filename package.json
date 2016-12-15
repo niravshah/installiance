@@ -17,6 +17,8 @@
     "config-leaf": "^0.3.0",
     "cookie-parser": "^1.4.3",
     "debug": "~2.2.0",
+    "ejs": "^2.5.5",
+    "email-templates": "^2.5.4",
     "express": "~4.13.4",
     "font-awesome": "^4.7.0",
     "instagram-node": "^0.5.8",

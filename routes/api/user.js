@@ -1,5 +1,5 @@
 var User = require('./../../models/user');
-var emailer = require('./../../modules/email');
+var emailer = require('./../../modules/emails/email');
 
 module.exports = function (app, config) {
 
