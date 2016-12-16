@@ -1,37 +1,38 @@
 // Wait for the DOM to be ready
 $(function () {
-    $("form[name='registration']").validate({
+    $("form[name='reset']").validate({
         // Specify validation rules
         rules: {
-            email: {
-                required: true,
-                email: true
+            password: {
+                required: true
+            },
+            oldPassword: {
+                required: true
+            },
+            repeatPassword: {
+                required: true
             }
         },
         // Specify validation error messages
         messages: {
-            email: "Please enter a valid email address"
+            password: "New Password can not be empty",
+            oldPassword: "Old Password can not be empty",
+            repeatPassword: "Repeat New Password can not be empty"
+
         },
         // Make sure the form is submitted to the destination defined
         // in the "action" attribute of the form when valid
         submitHandler: function (form) {
-            var shortid = $('#onboard-btn').data('shortid');
-            var url = '/api/user/' + shortid + '/email';
+            var url = '/api/user/login';
             $.ajax({
                 type: "POST",
                 url: url,
                 data: $(form).serialize(),
                 success: function () {
-                    $(form).html("<div id='message'></div>");
-                    $('#message').html("<h3>Email Address Updated!</h3>")
-                        .append("<p>An email has been sent to you with your login details</p>")
-                        .hide()
-                        .fadeIn(1500, function () {
-                            $('#message').append("<img class='ajaxReturnImage' src='/images/ok.png' />");
-                        });
+                    console.log('Login Successful')
                 },
                 error: function (xhr, error, thrownError) {
-                    $(form).html("<div id='message'></div>");
+                    $(form).append("<div id='message'></div>");
                     $('#message').html("<h3 class='error'>" + thrownError + "</h3>")
                         .append("<p>" + xhr.responseJSON.errorMessage + "</p>")
                         .hide()

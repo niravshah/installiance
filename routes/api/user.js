@@ -9,44 +9,49 @@ module.exports = function (app, config) {
 
     app.post('/api/user/:id/email', function (req, resp) {
         var password = generatePassword(8);
+        console.log("!!!", password);
         var encryptedPassword = bcrypt.hashSync(password, 10);
-        var user = new User({ shortid: req.params.id, email: req.body.email, password: encryptedPassword });
-        User.findOneAndUpdate({ shortid: req.params.id }, user, { new: true, upsert: true }, function (err, user) {
-            if (err) {
-                resp.status(500).json({ err: err, user: user });
-            } else {
-                if (config.emails === true) {
-                    emailer.registration(user.email, user.emailVerificationToken, password);
-                }
-                resp.json({ err: err, user: user });
-            }
+        var user = new User({
+            shortid: req.params.id,
+            email: req.body.email,
+            password: encryptedPassword
         });
+        User.findOneAndUpdate({shortid: req.params.id}, user, {new: true, upsert: true},
+                              function (err, user) {
+                                  if (err) {
+                                      resp.status(500).json({err: err, user: user});
+                                  } else {
+                                      if (config.emails === true) {
+                                          emailer.registration(user.email,
+                                                               user.emailVerificationToken,
+                                                               password);
+                                      }
+                                      resp.json({err: err, user: user});
+                                  }
+                              });
     });
 
-    app.post('/api/user/:id/login', function (req, res) {
+    app.post('/api/user/login', function (req, res) {
 
         User.findOne({
-            email: req.body.email
-        }, function (err, user) {
+                         email: req.body.email
+                     }, function (err, user) {
             if (err) {
-                res.json({
-                    success: false,
-                    message: 'Unexpected Error' + err.message
-                });
+                res.status(403).json({
+                                         errorMessage: 'Unexpected Error' + err.message
+                                     });
             }
             if (!user) {
-                res.json({
-                    success: false,
-                    message: 'Authentication failed. User not found.'
-                });
+                res.status(403).json({
+                                         errorMessage: 'Authentication failed. User not found.'
+                                     });
             } else if (user) {
 
-                bcrypt.compare(req.body.password, user.password, function (err, result) {
+                bcrypt.compare(req.body.pass, user.password, function (err, result) {
                     if (err) {
-                        res.json({
-                            success: false,
-                            message: 'Authentication failed. Unable to decrypt.'
-                        });
+                        res.status(403).json({
+                                                 errorMessage: 'Authentication failed. Unable to decrypt.'
+                                             });
 
                     } else {
 
@@ -54,25 +59,24 @@ module.exports = function (app, config) {
 
                             if (user.resetPassword == true) {
 
-                                res.redirect('/user/'+ req.params.id +'/password/reset')
+                                res.redirect('/user/' + user.shortid + '/password/reset')
 
                             } else {
 
                                 delete user.password;
-                                var token = jwt.sign(user, 'secret_sauce', { expiresIn: "4h" });
-                                res.cookie('jwt', token, { httpOnly: true });
+                                var token = jwt.sign(user, 'secret_sauce', {expiresIn: "4h"});
+                                res.cookie('jwt', token, {httpOnly: true});
                                 res.json({
-                                    success: true,
-                                    message: 'Enjoy your token!',
-                                    token: token
-                                });
+                                             success: true,
+                                             message: 'Enjoy your token!',
+                                             token: token
+                                         });
                             }
 
                         } else {
-                            res.json({
-                                success: false,
-                                message: 'Authentication failed. Wrong password.'
-                            });
+                            res.status(403).json({
+                                                     errorMessage: 'Authentication failed. Wrong password.'
+                                                 });
 
                         }
 
@@ -108,9 +112,9 @@ module.exports = function (app, config) {
                                     });
                                 } else {
                                     res.json({
-                                        success: false,
-                                        reason: "New Password does not match Repeat New Password"
-                                    })
+                                                 success: false,
+                                                 reason: "New Password does not match Repeat New Password"
+                                             })
                                 }
 
                             } else {

@@ -1,8 +1,11 @@
 // Wait for the DOM to be ready
 $(function () {
-    $("form[name='registration']").validate({
+    $("form[name='login']").validate({
         // Specify validation rules
         rules: {
+            pass: {
+                required: true
+            },
             email: {
                 required: true,
                 email: true
@@ -10,28 +13,22 @@ $(function () {
         },
         // Specify validation error messages
         messages: {
+            pass: "Password can not be empty",
             email: "Please enter a valid email address"
         },
         // Make sure the form is submitted to the destination defined
         // in the "action" attribute of the form when valid
         submitHandler: function (form) {
-            var shortid = $('#onboard-btn').data('shortid');
-            var url = '/api/user/' + shortid + '/email';
+            var url = '/api/user/login';
             $.ajax({
                 type: "POST",
                 url: url,
                 data: $(form).serialize(),
                 success: function () {
-                    $(form).html("<div id='message'></div>");
-                    $('#message').html("<h3>Email Address Updated!</h3>")
-                        .append("<p>An email has been sent to you with your login details</p>")
-                        .hide()
-                        .fadeIn(1500, function () {
-                            $('#message').append("<img class='ajaxReturnImage' src='/images/ok.png' />");
-                        });
+                    console.log('Login Successful')
                 },
                 error: function (xhr, error, thrownError) {
-                    $(form).html("<div id='message'></div>");
+                    $(form).append("<div id='message'></div>");
                     $('#message').html("<h3 class='error'>" + thrownError + "</h3>")
                         .append("<p>" + xhr.responseJSON.errorMessage + "</p>")
                         .hide()

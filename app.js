@@ -37,7 +37,7 @@ app.use(passport.initialize());
 
 require('./routes/passport/init')(passport);
 require('./routes/instagram')(app, config);
-require('./routes/login')(app);
+require('./routes/views/login')(app);
 require('./routes/api/user')(app,config);
 require('./routes/views/user')(app);
 // catch 404 and forward to error handler
