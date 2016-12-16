@@ -1,10 +1,17 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="content-wrapper-no-splash">
-    <div class="content" ng-app="influenceAllyHome">
-        <div ng-controller="homeController">
-            <h2 class="content-head is-center">Welcome Home!</h2>
+<div class="container" ng-app="influenceAllyHome">
+    <div class="content" ng-controller="homeController">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3>Welcome Home!</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <a href="#" class="btn btn-raised btn-primary">New Alliance</a>
+            </div>
         </div>
     </div>
 </div>
@@ -15,5 +22,5 @@
 <script src="/scripts/angular-ui-router/release/angular-ui-router.min.js"></script>
 
 <script src="/js/angular/homeApp.js"></script>
-<script src="/js/angular/controller/homeController.js"></script>
+<script src="/js/angular/controllers/homeController.js"></script>
 {% endblock %}

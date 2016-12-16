@@ -15,6 +15,7 @@
     "asyncjs": "0.0.10",
     "bcryptjs": "^2.4.0",
     "body-parser": "~1.15.1",
+    "bootstrap": "^3.3.7",
     "bson": "^0.4.23",
     "config-leaf": "^0.3.0",
     "cookie-parser": "^1.4.3",
