@@ -24,8 +24,10 @@ $(function () {
                 type: "POST",
                 url: url,
                 data: $(form).serialize(),
-                success: function () {
-                    console.log('Login Successful')
+                success: function (data, textStatus, xhr) {
+
+                    console.log('Login Successful', data, textStatus, xhr);
+                    window.location.replace(data.next);
                 },
                 error: function (xhr, error, thrownError) {
                     $(form).append("<div id='message'></div>");

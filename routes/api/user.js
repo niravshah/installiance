@@ -58,8 +58,8 @@ module.exports = function (app, config) {
                         if (result == true) {
 
                             if (user.resetPassword == true) {
-
-                                res.redirect('/user/' + user.shortid + '/password/reset')
+                                var nextLink = '/user/' + user.shortid + '/password/reset';
+                                res.json({next:nextLink});
 
                             } else {
 
@@ -67,6 +67,7 @@ module.exports = function (app, config) {
                                 var token = jwt.sign(user, 'secret_sauce', {expiresIn: "4h"});
                                 res.cookie('jwt', token, {httpOnly: true});
                                 res.json({
+                                             next: '/home',
                                              success: true,
                                              message: 'Enjoy your token!',
                                              token: token
