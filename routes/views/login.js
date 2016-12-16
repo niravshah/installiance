@@ -38,15 +38,11 @@ module.exports = function (app, bcrypt) {
                             if (user.resetPassword == true) {
                                 res.render('login/reset', { shortid: user.shortid })
                             } else {
-
                                 delete user.password;
                                 var token = jwt.sign(user, 'secret_sauce', { expiresIn: "4h" });
                                 res.cookie('jwt', token, { httpOnly: true });
-                                res.render('home', {
-                                    token: token
-                                });
+                                res.render('home');
                             }
-
                         } else {
                             res.status(403).render('login/login', {
                                 errorMessage: 'Authentication failed. Wrong password.'
