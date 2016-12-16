@@ -1,8 +1,8 @@
 var _ = require('lodash');
 var async = require('async');
 var ig = require('instagramapi').instagram();
-var mocks = require('./../mocks');
-var Stats = require('./../models/user_stats');
+var mocks = require('./../../mocks');
+var Stats = require('./../../models/user_stats');
 var shortid = require('shortid');
 
 module.exports = function (app, config) {
@@ -162,10 +162,10 @@ module.exports = function (app, config) {
     function isUserInfluencerCb(res, result, media) {
         if (result === true) {
             console.log("Returning Successful");
-            res.render('successful', {medias: media});
+            res.render('instagram/successful', {medias: media});
         } else {
             console.log("Returning Unsuccessful");
-            res.render('unsuccessful');
+            res.render('instagram/unsuccessful');
         }
     }
 
