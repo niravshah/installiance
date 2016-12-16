@@ -6,6 +6,7 @@ module.exports = function (app, config, bcrypt, salt) {
 
     app.post('/api/user/:id/email', function (req, resp) {
         var password = generatePassword(8);
+        console.log("!!!", password);
         var encryptedPassword = bcrypt.hashSync(password, salt);
         var user = new User({
             shortid: req.params.id,
