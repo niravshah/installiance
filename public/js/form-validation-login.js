@@ -1,7 +1,6 @@
 // Wait for the DOM to be ready
 $(function () {
     $("form[name='login']").validate({
-        // Specify validation rules
         rules: {
             pass: {
                 required: true
@@ -11,13 +10,10 @@ $(function () {
                 email: true
             }
         },
-        // Specify validation error messages
         messages: {
             pass: "Password can not be empty",
             email: "Please enter a valid email address"
         },
-        // Make sure the form is submitted to the destination defined
-        // in the "action" attribute of the form when valid
         submitHandler: function (form) {
             var url = '/api/user/login';
             $.ajax({
@@ -38,12 +34,6 @@ $(function () {
                 }
             });
             return false;
-        },
-        invalidHandler: function (event, validator) {
-            var errors = validator.numberOfInvalids();
-            if (errors) {
-                console.log('Errors:', errors);
-            }
         }
     });
 });

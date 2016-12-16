@@ -1,4 +1,5 @@
 var bcrypt = require('bcryptjs');
+var salt = bcrypt.genSaltSync(10);
 var generatePassword = require('password-generator');
 var jwt = require('jsonwebtoken');
 
@@ -10,7 +11,7 @@ module.exports = function (app, config) {
     app.post('/api/user/:id/email', function (req, resp) {
         var password = generatePassword(8);
         console.log("!!!", password);
-        var encryptedPassword = bcrypt.hashSync(password, 10);
+        var encryptedPassword = bcrypt.hashSync(password, salt);
         var user = new User({
             shortid: req.params.id,
             email: req.body.email,
@@ -89,43 +90,40 @@ module.exports = function (app, config) {
     });
 
     app.post('/api/user/:id/reset', function (req, res) {
-        User.findOne({_id: req.params.id}, function (err, user) {
+        User.findOne({shortid: req.params.id}, function (err, user) {
 
             if (err) {
-                res.status(500).json({success: false, err: err});
+                res.status(500).json({err: err});
             } else {
                 if (user) {
-                    bcrypt.compare(req.body.eP, user.password, function (err, result) {
+                    bcrypt.compare(req.body.oldPassword, user.password, function (err, result) {
 
                         if (err) {
-                            res.status(500).json({success: false, err: err});
+                            res.status(500).json({errorMessage: err});
                         } else {
                             if (result == true) {
-                                if (req.body.nP == req.body.rNP) {
-                                    user.password = bcrypt.hashSync(req.body.nP, salt);
+                                if (req.body.password == req.body.repeatPassword) {
+                                    user.password = bcrypt.hashSync(req.body.password, salt);
                                     user.resetPassword = false;
                                     user.save(function (err, user) {
                                         if (err) {
-                                            res.json({success: false, reason: err.message})
+                                            res.status(500).json({errorMessage: err.message})
                                         } else {
-                                            res.json({success: true});
+                                            res.json({next:'/home'});
                                         }
                                     });
                                 } else {
-                                    res.json({
-                                                 success: false,
-                                                 reason: "New Password does not match Repeat New Password"
-                                             })
+                                    res.status(400).json({errorMessage: "New Password does not match Repeat New Password"})
                                 }
 
                             } else {
-                                res.json({success: false, reason: "Password does not match"})
+                                res.status(400).json({errorMessage: "Your old Password does not match"})
                             }
                         }
                     });
 
                 } else {
-                    res.json({success: false, reason: "No matching user found"})
+                    res.status(400).json({errorMessage: "No matching user found"})
                 }
             }
         });

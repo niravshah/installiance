@@ -1,7 +1,6 @@
 // Wait for the DOM to be ready
 $(function () {
     $("form[name='reset']").validate({
-        // Specify validation rules
         rules: {
             password: {
                 required: true
@@ -13,15 +12,12 @@ $(function () {
                 required: true
             }
         },
-        // Specify validation error messages
         messages: {
             password: "New Password can not be empty",
             oldPassword: "Old Password can not be empty",
             repeatPassword: "Repeat New Password can not be empty"
 
         },
-        // Make sure the form is submitted to the destination defined
-        // in the "action" attribute of the form when valid
         submitHandler: function (form) {
 
             var shortid = $('#reset-btn').data('shortid');
@@ -31,8 +27,8 @@ $(function () {
                 type: "POST",
                 url: url,
                 data: $(form).serialize(),
-                success: function () {
-                    console.log('Login Successful')
+                success: function (result) {
+                    window.location.replace(result.next);
                 },
                 error: function (xhr, error, thrownError) {
                     $(form).append("<div id='message'></div>");
