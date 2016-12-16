@@ -2,8 +2,18 @@
 
 {% block content %}
 <div class="content-wrapper-no-splash">
-    <div class="content">
-        <h2 class="content-head is-center">Welcome Home!</h2>
+    <div class="content" ng-app="influenceAllyHome">
+        <div ng-controller="homeController">
+            <h2 class="content-head is-center">Welcome Home!</h2>
+        </div>
     </div>
 </div>
+{% endblock %}
+
+{%block scripts%}
+<script src="/scripts/angular/angular.min.js"></script>
+<script src="/scripts/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+<script src="/js/angular/homeApp.js"></script>
+<script src="/js/angular/controller/homeController.js"></script>
 {% endblock %}

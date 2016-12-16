@@ -41,8 +41,9 @@ module.exports = function (app, bcrypt) {
                                 delete user.password;
                                 var token = jwt.sign(user, 'secret_sauce', { expiresIn: "4h" });
                                 res.cookie('jwt', token, { httpOnly: true });
-                                res.render('home');
+                                res.render('home', { token: token });
                             }
+
                         } else {
                             res.status(403).render('login/login', {
                                 errorMessage: 'Authentication failed. Wrong password.'

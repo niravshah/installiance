@@ -10,6 +10,7 @@
     "angular": "^1.5.8",
     "angular-bootstrap-datetimepicker": "^1.0.1",
     "angular-sanitize": "^1.5.8",
+    "angular-ui-router": "^0.3.2",
     "async": "^2.1.4",
     "asyncjs": "0.0.10",
     "bcryptjs": "^2.4.0",
