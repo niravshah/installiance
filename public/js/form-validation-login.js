@@ -24,9 +24,7 @@ $(function () {
                 type: "POST",
                 url: url,
                 data: $(form).serialize(),
-                success: function (data, textStatus, xhr) {
-
-                    console.log('Login Successful', data, textStatus, xhr);
+                success: function (data) {
                     window.location.replace(data.next);
                 },
                 error: function (xhr, error, thrownError) {

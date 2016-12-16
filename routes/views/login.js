@@ -8,6 +8,6 @@ module.exports = function (app) {
     });
 
     app.get('/user/:id/password/reset', function (req, res) {
-        res.render('login/reset');
+        res.render('login/reset',{shortid: req.params.id});
     })
 };

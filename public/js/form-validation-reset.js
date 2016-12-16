@@ -23,7 +23,10 @@ $(function () {
         // Make sure the form is submitted to the destination defined
         // in the "action" attribute of the form when valid
         submitHandler: function (form) {
-            var url = '/api/user/login';
+
+            var shortid = $('#reset-btn').data('shortid');
+
+            var url = '/api/user/'+shortid +'/reset';
             $.ajax({
                 type: "POST",
                 url: url,
