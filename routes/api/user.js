@@ -1,12 +1,8 @@
-var bcrypt = require('bcryptjs');
-var salt = bcrypt.genSaltSync(10);
 var generatePassword = require('password-generator');
-var jwt = require('jsonwebtoken');
-
 var User = require('./../../models/user');
 var emailer = require('./../../modules/emails/email');
 
-module.exports = function (app, config) {
+module.exports = function (app, config, bcrypt, salt) {
 
     app.post('/api/user/:id/email', function (req, resp) {
         var password = generatePassword(8);
@@ -31,64 +27,7 @@ module.exports = function (app, config) {
                                   }
                               });
     });
-
-    app.post('/api/user/login', function (req, res) {
-
-        User.findOne({
-                         email: req.body.email
-                     }, function (err, user) {
-            if (err) {
-                res.status(403).json({
-                                         errorMessage: 'Unexpected Error' + err.message
-                                     });
-            }
-            if (!user) {
-                res.status(403).json({
-                                         errorMessage: 'Authentication failed. User not found.'
-                                     });
-            } else if (user) {
-
-                bcrypt.compare(req.body.pass, user.password, function (err, result) {
-                    if (err) {
-                        res.status(403).json({
-                                                 errorMessage: 'Authentication failed. Unable to decrypt.'
-                                             });
-
-                    } else {
-
-                        if (result == true) {
-
-                            if (user.resetPassword == true) {
-                                var nextLink = '/user/' + user.shortid + '/password/reset';
-                                res.json({next:nextLink});
-
-                            } else {
-
-                                delete user.password;
-                                var token = jwt.sign(user, 'secret_sauce', {expiresIn: "4h"});
-                                res.cookie('jwt', token, {httpOnly: true});
-                                res.json({
-                                             next: '/home',
-                                             success: true,
-                                             message: 'Enjoy your token!',
-                                             token: token
-                                         });
-                            }
-
-                        } else {
-                            res.status(403).json({
-                                                     errorMessage: 'Authentication failed. Wrong password.'
-                                                 });
-
-                        }
-
-                    }
-                });
-            }
-        });
-
-    });
-
+    
     app.post('/api/user/:id/reset', function (req, res) {
         User.findOne({shortid: req.params.id}, function (err, user) {
 
@@ -109,7 +48,7 @@ module.exports = function (app, config) {
                                         if (err) {
                                             res.status(500).json({errorMessage: err.message})
                                         } else {
-                                            res.json({next:'/home'});
+                                            res.json({next:'/login'});
                                         }
                                     });
                                 } else {

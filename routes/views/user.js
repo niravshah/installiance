@@ -23,10 +23,4 @@ module.exports = function (app) {
         });
     });
 
-    app.get('/user/:id/password/reset', function (req, res) {
-
-        res.render('reset');
-
-    });
-
 };

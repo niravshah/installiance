@@ -1,4 +1,7 @@
-module.exports = function (app) {
+var jwt = require('jsonwebtoken');
+var User = require('./../../models/user');
+
+module.exports = function (app, bcrypt) {
     app.get('/', function (req, res) {
         res.render('index');
     });
@@ -7,7 +10,55 @@ module.exports = function (app) {
         res.render('login/login');
     });
 
-    app.get('/user/:id/password/reset', function (req, res) {
-        res.render('login/reset',{shortid: req.params.id});
-    })
+    app.post('/login', function (req, res) {
+
+        User.findOne({
+            email: req.body.email
+        }, function (err, user) {
+            if (err) {
+                res.status(403).render('login/login', {
+                    errorMessage: 'Unexpected Error' + err.message
+                });
+            }
+            if (!user) {
+                res.status(403).render('login/login', {
+                    errorMessage: 'Authentication failed. User not found.'
+                });
+            } else if (user) {
+
+                bcrypt.compare(req.body.pass, user.password, function (err, result) {
+                    if (err) {
+                        res.status(403).render('login/login', {
+                            errorMessage: 'Authentication failed. Unable to decrypt.'
+                        });
+
+                    } else {
+
+                        if (result == true) {
+                            if (user.resetPassword == true) {
+                                res.render('login/reset', { shortid: user.shortid })
+                            } else {
+
+                                delete user.password;
+                                var token = jwt.sign(user, 'secret_sauce', { expiresIn: "4h" });
+                                res.cookie('jwt', token, { httpOnly: true });
+                                res.render('home', {
+                                    token: token
+                                });
+                            }
+
+                        } else {
+                            res.status(403).render('login/login', {
+                                errorMessage: 'Authentication failed. Wrong password.'
+                            });
+
+                        }
+
+                    }
+                });
+            }
+        });
+
+    });
+
 };

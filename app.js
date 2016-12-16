@@ -35,10 +35,13 @@ app.use(logger('dev'));
 var passport = require('passport');
 app.use(passport.initialize());
 
+var bcrypt = require('bcryptjs');
+var salt = bcrypt.genSaltSync(10);
+
 require('./routes/passport/init')(passport);
 require('./routes/api/instagram')(app, config);
-require('./routes/views/login')(app);
-require('./routes/api/user')(app,config);
+require('./routes/views/login')(app, bcrypt, salt);
+require('./routes/api/user')(app,config, bcrypt, salt);
 require('./routes/views/user')(app);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

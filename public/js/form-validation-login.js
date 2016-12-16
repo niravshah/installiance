@@ -15,7 +15,7 @@ $(function () {
             email: "Please enter a valid email address"
         },
         submitHandler: function (form) {
-            var url = '/api/user/login';
+            /*var url = '/api/user/login';
             $.ajax({
                 type: "POST",
                 url: url,
@@ -33,7 +33,8 @@ $(function () {
                         });
                 }
             });
-            return false;
+            return false;*/
+            form.submit();
         }
     });
 });
