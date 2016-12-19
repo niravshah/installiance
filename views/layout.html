@@ -32,12 +32,23 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="javascript:void(0)">Brand</a>
+            <a class="navbar-brand" href="javascript:void(0)">Influence Ally</a>
         </div>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="javascript:void(0)">Active</a></li>
-                <li><a href="javascript:void(0)">Link</a></li>
+                <li class="dropdown">
+                    <a data-target="#" class="dropdown-toggle" data-toggle="dropdown">Alliances
+                        <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="javascript:void(0)">Create New</a></li>
+                        <li><a href="javascript:void(0)">Another action</a></li>
+                        <li><a href="javascript:void(0)">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Dropdown header</li>
+                        <li><a href="javascript:void(0)">Separated link</a></li>
+                        <li><a href="javascript:void(0)">One more separated link</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
@@ -48,6 +59,9 @@
 <script src="/scripts/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="/scripts/bootstrap-material-design/dist/js/material.min.js"></script>
 <script src="/scripts/bootstrap-material-design/dist/js/ripples.min.js"></script>
+<script>
+    $.material.init();
+</script>
 {%block scripts%}{% endblock %}
 </body>
 
