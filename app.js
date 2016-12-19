@@ -39,13 +39,13 @@ var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
 
 require('./routes/passport/init')(passport);
-require('./routes/api/instagram')(app, config);
-require('./routes/views/login')(app, bcrypt, salt);
-require('./routes/api/user')(app, config, bcrypt, salt);
-require('./routes/views/user')(app);
+require('./routes/mvc/instagram')(app, config);
+require('./routes/mvc/login')(app, bcrypt, salt);
+require('./routes/ajax/user')(app, config, bcrypt, salt);
+require('./routes/mvc/user')(app);
 
-require('./routes/views/home')(app, passport);
-require('./routes/api/stats')(app,passport);
+require('./routes/mvc/home')(app, passport);
+require('./routes/ajax/stats')(app,passport);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
