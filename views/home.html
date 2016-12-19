@@ -5,14 +5,10 @@
     <div class="content" ng-controller="homeController">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h3>Welcome Home!</h3>
+                <a ng-href="#/alliance/new" class="btn btn-raised btn-primary">New Alliance</a>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <a href="#" class="btn btn-raised btn-primary">New Alliance</a>
-            </div>
-        </div>
+        <div ui-view></div>
     </div>
 </div>
 {% endblock %}
@@ -23,4 +19,5 @@
 
 <script src="/js/angular/homeApp.js"></script>
 <script src="/js/angular/controllers/homeController.js"></script>
+<script src="/js/angular/controllers/allianceController.js"></script>
 {% endblock %}
