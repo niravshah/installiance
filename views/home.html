@@ -1,13 +1,13 @@
 {% extends 'layout.html' %}
 
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/scripts/selectize/dist/css/selectize.default.css">
+{% endblock %}
+
+
 {% block content %}
 <div class="container" ng-app="influenceAllyHome">
     <div class="content" ng-controller="homeController">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <a ng-href="#/alliance/new" class="btn btn-raised btn-primary">New Alliance</a>
-            </div>
-        </div>
         <div ui-view></div>
     </div>
 </div>
@@ -16,6 +16,9 @@
 {%block scripts%}
 <script src="/scripts/angular/angular.min.js"></script>
 <script src="/scripts/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+<script src="/scripts/selectize/dist/js/standalone/selectize.min.js"></script>
+<script src="/scripts/angular-selectize2/dist/selectize.js"></script>
 
 <script src="/js/angular/homeApp.js"></script>
 <script src="/js/angular/controllers/homeController.js"></script>

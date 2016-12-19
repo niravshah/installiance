@@ -10,6 +10,7 @@
     "angular": "^1.5.8",
     "angular-bootstrap-datetimepicker": "^1.0.1",
     "angular-sanitize": "^1.5.8",
+    "angular-selectize2": "^1.2.3",
     "angular-ui-router": "^0.3.2",
     "async": "^2.1.4",
     "asyncjs": "0.0.10",
@@ -43,6 +44,7 @@
     "password-generator": "^2.0.6",
     "purecss": "^0.6.1",
     "request": "^2.74.0",
+    "selectize": "^0.12.4",
     "shortid": "^2.2.6",
     "swig": "^1.4.2",
     "vivus": "^0.4.0"

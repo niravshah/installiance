@@ -14,6 +14,7 @@ mongoose.connect(config.mongoUrl);
 var path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/scripts/', express.static(__dirname + '/node_modules/'));
+app.use('/bower/', express.static(__dirname + '/bower_components/'));
 
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
