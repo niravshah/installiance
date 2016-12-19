@@ -3,11 +3,11 @@ var app = angular.module('influenceAllyHome', ['ui.router']);
 app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider) {
 
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/dashboard');
 
     $stateProvider
-        .state('home', {
-            url: '/home',
+        .state('dashboard', {
+            url: '/dashboard',
             templateUrl: '/js/angular/partials/home.html'
         })
         .state('alliance',{

@@ -36,18 +36,39 @@
         </div>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="javascript:void(0)">Active</a></li>
-                <li><a href="javascript:void(0)">Link</a></li>
+                <li class="active"><a href="javascript:void(0)">Home</a></li>
+                <li class="dropdown">
+                    <a href="#/alliances" data-target="dropdown-menu" class="dropdown-toggle" data-toggle="dropdown">Alliances
+                        <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/alliances">Alliances</a></li>
+                        <li><a href="#/alliance/new">Create New</a></li>
+                        <li class="divider"></li>
+                        <li><a href="javascript:void(0)">Separated link</a></li>
+                        <li><a href="javascript:void(0)">One more separated link</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
 </div>
+
+
 {% block content %}{% endblock %}
 <script src="/scripts/jquery/dist/jquery.min.js"></script>
 <script src="/scripts/vivus/dist/vivus.min.js"></script>
 <script src="/scripts/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="/scripts/bootstrap-material-design/dist/js/material.min.js"></script>
 <script src="/scripts/bootstrap-material-design/dist/js/ripples.min.js"></script>
+<script src="/bower/dropdown.js/jquery.dropdown.js"></script>
+
+<script type="text/javascript">
+    $.material.init();
+
+    $(document).ready(function () {
+        $(".dropdown-menu").dropdown({ "optionClass": "withripple" });
+    });
+</script>
 {%block scripts%}{% endblock %}
 </body>
 

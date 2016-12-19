@@ -41,7 +41,7 @@ module.exports = function (app, bcrypt) {
                                 delete user.password;
                                 var token = jwt.sign(user, 'secret_sauce', { expiresIn: "4h" });
                                 res.cookie('jwt', token, { httpOnly: true });
-                                res.render('home', { token: token });
+                                res.redirect('/home');
                             }
 
                         } else {
@@ -57,5 +57,9 @@ module.exports = function (app, bcrypt) {
         });
 
     });
+
+    app.get('/home', function(req,res){
+        res.render('home');
+    })
 
 };
