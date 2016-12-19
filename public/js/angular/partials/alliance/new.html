@@ -1,5 +1,29 @@
 <div class="row">
-    <div class="col-md-12 text-center">
-        <h3>New Alliance</h3>
+    <h3>New Alliance</h3>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <form method="POST" action="/alliance/new" name="new-alliance" class="form-horizontal">
+            <fieldset>
+                <div class="form-group">
+                    <label class="control-label" for="name">Alliance Name</label>
+                    <input class="form-control" id="name" type="text" name="name">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="influenceArea">Area of Influence</label>
+                    <select id="influenceArea" class="form-control">
+                        <option>Fashion</option>
+                        <option>Music</option>
+                        <option>Lifestyle</option>
+                        <option>Others</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Tags</label>
+                    <selectize config='myConfig' options='myOptions' ng-model="myModel" class="md-mt-20"></selectize>
+                </div>
+                <button id="login-btn" type="submit" class="md-mt-40 btn btn-raised btn-primary">Create</button>
+            </fieldset>
+        </form>
     </div>
 </div>

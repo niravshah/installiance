@@ -41,11 +41,7 @@
                     <a href="#/alliances" data-target="dropdown-menu" class="dropdown-toggle" data-toggle="dropdown">Alliances
                         <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#/alliances">Alliances</a></li>
                         <li><a href="#/alliance/new">Create New</a></li>
-                        <li class="divider"></li>
-                        <li><a href="javascript:void(0)">Separated link</a></li>
-                        <li><a href="javascript:void(0)">One more separated link</a></li>
                     </ul>
                 </li>
             </ul>
@@ -66,7 +62,7 @@
     $.material.init();
 
     $(document).ready(function () {
-        $(".dropdown-menu").dropdown({ "optionClass": "withripple" });
+       $(".dropdown-menu").dropdown({ "optionClass": "withripple" });
     });
 </script>
 {%block scripts%}{% endblock %}

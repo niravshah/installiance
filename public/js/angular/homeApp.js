@@ -1,4 +1,4 @@
-var app = angular.module('influenceAllyHome', ['ui.router']);
+var app = angular.module('influenceAllyHome', ['ui.router','selectize']);
 
 app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider) {
 
