@@ -2,14 +2,12 @@
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="/scripts/selectize/dist/css/selectize.default.css">
+<link rel="stylesheet" type="text/css" href="/bower/angular-notify/dist/angular-notify.css">
 {% endblock %}
 
 
 {% block content %}
-<div class="container" ng-app="influenceAllyHome">
-    <div class="content" ng-controller="homeController">
-        <div ui-view></div>
-    </div>
+<div class="container" ng-app="influenceAllyHome" ng-controller="homeController" ui-view>
 </div>
 {% endblock %}
 
@@ -19,8 +17,10 @@
 
 <script src="/scripts/selectize/dist/js/standalone/selectize.min.js"></script>
 <script src="/scripts/angular-selectize2/dist/selectize.js"></script>
+<script src="/bower/angular-notify/dist/angular-notify.js"></script>
 
 <script src="/js/angular/homeApp.js"></script>
 <script src="/js/angular/controllers/homeController.js"></script>
-<script src="/js/angular/controllers/allianceController.js"></script>
+<script src="/js/angular/controllers/alliances/new.js"></script>
+<script src="/js/angular/controllers/alliances/existing.js"></script>
 {% endblock %}

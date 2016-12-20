@@ -1,0 +1,42 @@
+<div class="row">
+    <h3>New Alliance</h3>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <form class="form-horizontal" name="newAllianceForm" ng-submit="createAlliance()" novalidate>
+            <div class="form-group"
+                 ng-class="{ 'has-error' : newAllianceForm.name.$invalid && !userForm.name.$pristine }">
+                <input class="form-control" id="name" type="text" name="name" ng-model="name"
+                       placeholder="Name your alliance....">
+                <p ng-show="newAllianceForm.name.$invalid && !newAllianceForm.name.$pristine" class="help-block">Enter a valid
+                    name.</p>
+            </div>
+            <div class="form-group"
+                 ng-class="{ 'has-error' : newAllianceForm.description.$invalid && !userForm.description.$pristine }">
+                <input class="form-control" id="description" type="text" name="description" ng-model="description"
+                       placeholder="Add a short description....">
+                <p ng-show="newAllianceForm.description.$invalid && !newAllianceForm.description.$pristine" class="help-block">Enter a valid
+                    name.</p>
+            </div>
+            <div class="form-group"
+                 ng-class="{ 'has-error' : newAllianceForm.area.$invalid && !userForm.area.$pristine }">
+                <selectize placeholder='Pick an area of influence...' options='areaOptions' config="{maxItems: 1, labelField: 'item',valueField: 'item'}"
+                           id="area" name="area" ng-model="area" required='true' class="md-mt-20"></selectize>
+                <p ng-show="newAllianceForm.area.$invalid && !newAllianceForm.area.$pristine" class="help-block">Select valid area of
+                    Influence.</p>
+            </div>
+            <div class="form-group">
+                <selectize placeholder='Add up to 10 tags...'
+                           config='{maxItems: 10,create:true, labelField: "item",valueField: "item"}'
+                           options='tagOptions'
+                           ng-model="tags" class="md-mt-20" require="true"></selectize>
+            </div>
+            <div class="form-group">
+                <button ng-disabled="newAllianceForm.$invalid" type="submit"
+                        class="md-mt-40 btn btn-raised btn-primary">
+                    Create
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

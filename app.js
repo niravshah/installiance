@@ -48,6 +48,7 @@ require('./routes/ajax/refdata')(app);
 
 require('./routes/mvc/home')(app, passport);
 require('./routes/ajax/stats')(app, passport);
+require('./routes/ajax/alliance')(app, passport);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
