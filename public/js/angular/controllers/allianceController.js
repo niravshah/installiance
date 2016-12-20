@@ -10,9 +10,9 @@ app.controller('allianceController', function ($http, $scope) {
 
     $scope.init();
 
-    $scope.newTags = [];
-    $scope.newTagsOptions = [];
-    $scope.newTagsConfig = {
+    $scope.tags = [];
+    $scope.tagOptions = [];
+    $scope.tagConfig = {
         create: true,
         valueField: 'id',
         labelField: 'tag',
