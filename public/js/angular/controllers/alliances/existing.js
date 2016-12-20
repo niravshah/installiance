@@ -3,8 +3,9 @@ app.controller('existingAllianceController', function ($http, $scope, $statePara
     $scope.init = function () {
         $http.get('/api/alliances/' + $stateParams.allianceId).then(function (response) {
             $scope.alliance = response.data;
+            $scope.joinUrl = '/alliances/' + response.data.allianceId + '/join/' + response.data.joinToken;
 
-            var creatorUrl = '/api/stats/' + response.data.alliance.shortid;
+            var creatorUrl = '/api/stats/' + response.data.shortid;
             $http.get(creatorUrl).then(function (response) {
                 $scope.creator = response.data;
             }, function (error) {

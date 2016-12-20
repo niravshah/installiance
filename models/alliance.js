@@ -7,6 +7,7 @@ var allianceSchema = new Schema({
     name: { type: String, required: true },
     area: { type: String, required: true},
     description: { type: String},
+    joinToken: { type: String, required: true},
     tags: { type: Schema.Types.Mixed, default: true }
 });
 

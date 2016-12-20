@@ -6,9 +6,9 @@ module.exports = function (app, passport) {
     app.post('/api/alliances/new', passport.authenticate('jwt'), function (req, res) {
 
         var alliance = req.body;
-        alliance.allianceId = shortid.generate();
         alliance.shortid = req.user.shortid;
-
+        alliance.allianceId = shortid.generate();
+        alliance.joinToken = shortid.generate();
         new Alliance(alliance).save(function (err, alliance) {
             if (err) {
                 console.log('Error', err);

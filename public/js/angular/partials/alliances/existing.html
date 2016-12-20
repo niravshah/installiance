@@ -1,7 +1,26 @@
 <div class="row">
-    <h3>{[{alliance.name}]}</h3>
+    <div class="col-md-4">
+        <h3>{[{alliance.name}]}</h3>
+    </div>
 </div>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
+        {[{alliance.description}]}
+    </div>
+</div>
+<div class="row md-mt-20">
+    <div class="col-md-2">
+        Creator
+    </div>
+    <div class="col-md-4">
+        {[{creator.full_name}]}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        Join Url
+    </div>
+    <div class="col-md-4">
+        <a href="{[{joinUrl}]}">Join Link</a>
     </div>
 </div>
