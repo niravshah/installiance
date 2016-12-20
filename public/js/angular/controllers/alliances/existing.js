@@ -1,19 +1,24 @@
 app.controller('existingAllianceController', function ($http, $scope, $stateParams, notify) {
 
-    $scope.temp = "Random Text";
-    $scope.alliance;
     $scope.init = function () {
-        console.log('existingAllianceController');
-
         $http.get('/api/alliances/' + $stateParams.allianceId).then(function (response) {
-            console.log(response);
-            $scope.alliance = response.data.alliance;
+            $scope.alliance = response.data;
+
+            var creatorUrl = '/api/stats/' + response.data.alliance.shortid;
+            $http.get(creatorUrl).then(function (response) {
+                $scope.creator = response.data;
+            }, function (error) {
+                var errorMessage = "Could not find the creator for the alliance with id: " + $stateParams.allianceId;
+                console.log(errorMessage, error);
+                notify(errorMessage);
+            });
+
         }, function (error) {
-            console.log("Could not find the alliance with id: " + $stateParams.allianceId, error);
-            notify('Could not find the alliance with id: ' + $stateParams.allianceId)
+            var errorMessage = "Could not find the alliance with id: " + $stateParams.allianceId;
+            console.log(errorMessage, error);
+            notify(errorMessage);
         });
     };
 
     $scope.init();
-
 });
