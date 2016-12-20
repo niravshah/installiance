@@ -1,11 +1,14 @@
 app.controller('allianceController', function ($http, $scope) {
 
     $scope.areaOptions = [];
-    $scope.init = function(){
-        $http.get('/api/ref-data/options/area').then(function(response){
-            console.log('Area Options', response.data);
+    $scope.init = function () {
+        $http.get('/api/ref-data/options/areas').then(function (response) {
             $scope.areaOptions = response.data;
-        })
+        });
+
+        $http.get('/api/ref-data/options/tags').then(function (response) {
+            $scope.tagOptions = response.data;
+        });
     };
 
     $scope.init();
@@ -20,7 +23,7 @@ app.controller('allianceController', function ($http, $scope) {
         placeholder: 'Add Tags to your Alliance'
     };
 
-    $scope.create = function(){
+    $scope.create = function () {
         console.log('Create', $scope.name, $scope.area, $scope.newTags);
     }
 });
