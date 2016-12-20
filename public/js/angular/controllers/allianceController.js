@@ -1,28 +1,26 @@
 app.controller('allianceController', function ($http, $scope) {
-    $scope.init = function () {
 
-
-
+    $scope.areaOptions = [];
+    $scope.init = function(){
+        $http.get('/api/ref-data/options/area').then(function(response){
+            console.log('Area Options', response.data);
+            $scope.areaOptions = response.data;
+        })
     };
+
     $scope.init();
 
-    $scope.myModel = 1;
-
-    $scope.myOptions = [
-        {id: 1, title: 'Spectrometer'},
-        {id: 2, title: 'Star Chart'},
-        {id: 3, title: 'Laser Pointer'}
-    ];
-
-    $scope.myConfig = {
+    $scope.newTags = [];
+    $scope.newTagsOptions = [];
+    $scope.newTagsConfig = {
         create: true,
         valueField: 'id',
-        labelField: 'title',
+        labelField: 'tag',
         delimiter: '|',
-        placeholder: 'Pick something',
-        onInitialize: function(selectize){
-            // receives the selectize object as an argument
-        },
-        // maxItems: 1
+        placeholder: 'Add Tags to your Alliance'
     };
+
+    $scope.create = function(){
+        console.log('Create', $scope.name, $scope.area, $scope.newTags);
+    }
 });
