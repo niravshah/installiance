@@ -3,5 +3,46 @@
 </div>
 <div class="row">
     <div class="col-md-6">
+        <form class="form-horizontal" name="newCampaignForm" ng-submit="createCampaign()" novalidate>
+            <div class="form-group"
+                 ng-class="{ 'has-error' : newCampaignForm.name.$invalid && !newCampaignForm.name.$pristine }">
+                <input class="form-control" id="name" type="text" name="name" ng-model="name"
+                       placeholder="Name your campaign....">
+                <p ng-show="newCampaignForm.name.$invalid && !newCampaignForm.name.$pristine" class="help-block">Enter a valid
+                    name.</p>
+            </div>
+            <div class="form-group"
+                 ng-class="{ 'has-error' : newCampaignForm.description.$invalid && !newCampaignForm.description.$pristine }">
+                <input class="form-control" id="description" type="text" name="description" ng-model="description"
+                       placeholder="Add a short description....">
+                <p ng-show="newCampaignForm.description.$invalid && !newCampaignForm.description.$pristine" class="help-block">Enter a valid
+                    description.</p>
+            </div>
+            <div class="form-group"
+                 ng-class="{ 'has-error' : newCampaignForm.area.$invalid && !newCampaignForm.area.$pristine }">
+                <selectize placeholder='Pick a domain area...' options='areaOptions' config="{maxItems: 1, labelField: 'item',valueField: 'item'}"
+                           id="area" name="area" ng-model="area" required='true' class="md-mt-20"></selectize>
+                <p ng-show="newCampaignForm.area.$invalid && !newCampaignForm.area.$pristine" class="help-block">Select valid domain area.</p>
+            </div>
+            <div class="form-group">
+                <selectize placeholder='Add up to 10 tags...'
+                           config='{maxItems: 10,create:true, labelField: "item",valueField: "item"}'
+                           options='tagOptions'
+                           ng-model="tags" class="md-mt-20" require="true"></selectize>
+            </div>
+            <div class="form-group"
+                 ng-class="{ 'has-error' : newCampaignForm.bounty.$invalid && !newCampaignForm.bounty.$pristine }">
+                <input class="form-control" id="bounty" type="text" name="bounty" ng-model="bounty"
+                       placeholder="Add a winners bounty....">
+                <p ng-show="newCampaignForm.bounty.$invalid && !newCampaignForm.bounty.$pristine" class="help-block">Enter a valid
+                    bounty.</p>
+            </div>            
+            <div class="form-group">
+                <button ng-disabled="newCampaignForm.$invalid" type="submit"
+                        class="md-mt-40 btn btn-raised btn-primary">
+                    Create
+                </button>
+            </div>
+        </form>
     </div>
 </div>

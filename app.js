@@ -50,6 +50,7 @@ require('./routes/ajax/refdata')(app);
 require('./routes/ajax/user')(app, config, bcrypt, salt,passport);
 require('./routes/ajax/stats')(app, passport);
 require('./routes/ajax/alliance')(app, passport);
+require('./routes/ajax/campaign')(app, passport);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
