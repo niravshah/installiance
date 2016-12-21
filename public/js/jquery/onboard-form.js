@@ -17,7 +17,7 @@ $(function () {
         submitHandler: function (form) {
             var shortid = $('#onboard-btn').data('shortid');
             var state = $('#onboard-btn').data('state');
-            var url = '/api/user/' + shortid + '/email?state='+state;
+            var url = '/api/user/' + shortid + '/email?state=' + state;
             $.ajax({
                 type: "POST",
                 url: url,
@@ -31,15 +31,16 @@ $(function () {
                             $('#message').append("<img class='ajaxReturnImage' src='/images/ok.png' />");
 
                         })
-                        .fadeIn(1000,function(){
+                        .fadeIn(1000, function () {
                             $('#message').append("<br/>");
                             $('#message').append("<a href='/login' class='btn btn-raised btn-primary md-mt-20'>Login</a>")
                         });
-                    if(state!='new'){
-                        $.post('/api/alliances/' + state + '/allies/add/' + data.user.shortid).then(function(response){
+                    if (state != 'new') {
+                        $.post('/api/alliances/' + state + '/allies/add/' + data.user.shortid).then(function (response) {
                             $('#message').append("<br/>");
                             $('#message').append("<p>User Added to Alliance</p>")
-                        },function(error){
+                        }, function (error) {
+                            console.log(error);
                             $('#message').append("<br/>");
                             $('#message').append("<p>Error Adding User to Alliance</p>")
                         })
