@@ -12,7 +12,7 @@ module.exports = function (app, config) {
         client_secret: '54fc1a4b2b8e45a6a04016657b03bfa6'
     });
 
-    var redirect_uri = 'https://allyx.herokuapp.com/welcome';
+    var redirect_uri = 'https://influenceally.com/welcome';
 
     app.get('/authorize_user/:state', function (req, res) {
         res.redirect(ig.get_authorization_url(redirect_uri, {
@@ -26,7 +26,7 @@ module.exports = function (app, config) {
             if (err) {
                 console.log(err);
                 res.render('error', {
-                    message: "We could not authorize your request with Instagram!",
+                    message: "We could not authorize your request with Instagram.",
                     details: err.body
                 })
             } else {

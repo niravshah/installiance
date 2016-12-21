@@ -10,6 +10,8 @@ module.exports = function (app, passport) {
         alliance.shortid = req.user.shortid;
         alliance.allianceId = shortid.generate();
         alliance.joinToken = shortid.generate();
+        alliance.members=[];
+        alliance.members.push(req.user._id);
         new Alliance(alliance).save(function (err, alliance) {
             if (err) {
                 console.log('Error', err);
@@ -50,7 +52,14 @@ module.exports = function (app, passport) {
                             res.status(500).json({ message: "Error finding alliance for adding user" })
                         } else {
                             if (alliance) {
-                                alliance.members.push(user._id)
+                                alliance.members.push(user._id);
+                                alliance.save(function(err,all){
+                                    if(err){
+                                        res.status(500).json({ message: "Error saving alliance after adding user" })
+                                    }else{
+                                        res.json(all);
+                                    }
+                                })
                             } else {
                                 res.status(404).json({ message: "Could not find the alliance to add the user" })
                             }

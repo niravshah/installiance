@@ -9,7 +9,7 @@ var allianceSchema = new Schema({
     description: { type: String },
     joinToken: { type: String, required: true },
     tags: { type: Schema.Types.Mixed, default: true },
-    members: { type: [Schema.Types.ObjectId], default: [] }
+    members: [{ type: Schema.Types.ObjectId, ref:'User'}]
 });
 
 module.exports = mongoose.model('Alliance', allianceSchema);
