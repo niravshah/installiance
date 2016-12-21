@@ -9,6 +9,7 @@
   "dependencies": {
     "angular": "^1.5.8",
     "angular-bootstrap-datetimepicker": "^1.0.1",
+    "angular-jwt": "^0.1.8",
     "angular-notify": "^1.2.0",
     "angular-sanitize": "^1.5.8",
     "angular-selectize2": "^1.2.3",

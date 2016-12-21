@@ -17,7 +17,6 @@
   ],
   "dependencies": {
     "dropdown.js": "*",
-    "selectize": "^0.12.4",
     "angular-notify": "^2.5.0"
   }
 }
