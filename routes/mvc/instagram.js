@@ -84,7 +84,7 @@ module.exports = function (app, config) {
     app.get('/mocktest', function (req, res) {
         var results = mocks;
         isUserInfluencer(results, function (result, media) {
-            isUserInfluencerCb(res, result, media)
+            isUserInfluencerCb(res, result, media,"new")
         });
     });
 
@@ -159,12 +159,11 @@ module.exports = function (app, config) {
     }
 
     function isUserInfluencerCb(res, result, media, state) {
-        console.log("!!! isUserInfluencerCb", state);
         if (result === true) {
-            console.log("Returning Successful");
+            //console.log("Returning Successful");
             res.render('instagram/successful', { medias: media, state: state });
         } else {
-            console.log("Returning Unsuccessful");
+            //console.log("Returning Unsuccessful");
             res.render('instagram/unsuccessful');
         }
     }

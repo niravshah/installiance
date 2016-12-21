@@ -5,8 +5,6 @@ var userStats = new Schema({
     instagram_id: { type: String, default: true },
     full_name: { type: String, required: true },
     profile_picture: { type: String, required: true },
-    email: { type: String },
-    password: { type: String },
     counts: { type: Schema.Types.Mixed, required: true },
     timestamp: { type: Date },
     all_tags: { type: Schema.Types.Mixed },
