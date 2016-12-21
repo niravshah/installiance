@@ -1,8 +1,9 @@
 var generatePassword = require('password-generator');
 var User = require('./../../models/user');
+var Alliance = require('./../../models/alliance');
 var emailer = require('./../../modules/emails/email');
 
-module.exports = function (app, config, bcrypt, salt) {
+module.exports = function (app, config, bcrypt, salt, passport) {
 
     app.post('/api/user/:id/email', function (req, resp) {
         var password = generatePassword(8);
@@ -66,6 +67,23 @@ module.exports = function (app, config, bcrypt, salt) {
                 }
             }
         });
+    });
+
+    app.get('/api/user/:uid/alliances', passport.authenticate('jwt'), function (req, res) {
+
+        Alliance.find({ shortid: req.params.uid }, function (err, alliances) {
+            if (err) {
+                console.log('Error', err);
+                res.status(500).json({ error: err })
+            } else {
+                if (alliances) {
+                    res.json(alliances);
+                } else {
+                    res.status(400).json({ error: 'Could not find the alliance' })
+                }
+            }
+        })
+
     });
 
 };

@@ -47,7 +47,7 @@ require('./routes/mvc/home')(app, passport);
 require('./routes/mvc/alliance')(app);
 
 require('./routes/ajax/refdata')(app);
-require('./routes/ajax/user')(app, config, bcrypt, salt);
+require('./routes/ajax/user')(app, config, bcrypt, salt,passport);
 require('./routes/ajax/stats')(app, passport);
 require('./routes/ajax/alliance')(app, passport);
 
