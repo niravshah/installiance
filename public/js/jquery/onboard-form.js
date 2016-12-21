@@ -29,6 +29,10 @@ $(function () {
                         .hide()
                         .fadeIn(1500, function () {
                             $('#message').append("<img class='ajaxReturnImage' src='/images/ok.png' />");
+
+                        })
+                        .fadeIn(1000,function(){
+                            $('#message').append("<a href='/login' class='btn btn-raised btn-primary md-mt-20'>Login</a>")
                         });
                 },
                 error: function (xhr, error, thrownError) {
