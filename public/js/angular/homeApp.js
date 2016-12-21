@@ -30,7 +30,7 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider,jw
 });
 
 
-app.run(['$rootScope', '$state', 'AuthService', function ($rootScope, $state, AuthService) {
+/*app.run(['$rootScope', '$state', 'AuthService', function ($rootScope, $state, AuthService) {
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
         if (!AuthService.validToken() && toState.authenticate) {
             $state.transitionTo('login');
@@ -42,4 +42,4 @@ app.run(['$rootScope', '$state', 'AuthService', function ($rootScope, $state, Au
         }
     });
 
-}]);
+}]);*/

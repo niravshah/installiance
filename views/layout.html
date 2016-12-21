@@ -17,12 +17,15 @@
     <link rel="stylesheet" type="text/css" href="/css/less-space.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
 
+    <link rel="stylesheet" type="text/css" href="/scripts/selectize/dist/css/selectize.default.css">
+    <link rel="stylesheet" type="text/css" href="/bower/angular-notify/dist/angular-notify.css">
+
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
     {% block css %}{% endblock %}
 </head>
 
-<body>
+<body ng-app="influenceAllyHome">
 <div class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -38,10 +41,10 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="javascript:void(0)">Home</a></li>
                 <li class="dropdown">
-                    <a href="#/alliances" data-target="dropdown-menu" class="dropdown-toggle" data-toggle="dropdown">Alliances
+                    <a href="#" data-target="dropdown-menu" class="dropdown-toggle" data-toggle="dropdown">Alliances
                         <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#/alliances/new">Create New</a></li>
+                        <li><a ui-sref="new-alliance">Create New</a></li>
                     </ul>
                 </li>
             </ul>
@@ -63,6 +66,24 @@
        $(".dropdown-menu").dropdown({ "optionClass": "withripple" });
     });
 </script>
+
+
+<script src="/scripts/angular/angular.min.js"></script>
+<script src="/scripts/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="/scripts/angular-jwt/dist/angular-jwt.min.js"></script>
+<script src="/scripts/selectize/dist/js/standalone/selectize.min.js"></script>
+<script src="/scripts/angular-selectize2/dist/selectize.js"></script>
+
+<script src="/bower/angular-notify/dist/angular-notify.js"></script>
+
+<script src="/js/angular/notify-template-cache.js"></script>
+<script src="/js/angular/homeApp.js"></script>
+<script src="/js/angular/services/auth.js"></script>
+<script src="/js/angular/controllers/homeController.js"></script>
+<script src="/js/angular/controllers/alliances/new.js"></script>
+<script src="/js/angular/controllers/alliances/existing.js"></script>
+
+
 {%block scripts%}{% endblock %}
 </body>
 
