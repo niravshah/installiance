@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
-    "postinstall": "bower install && decrypt config.js.cast5 config.js",
+    "postinstall": "bower install",
     "encrypt": "encrypt config.js config.js.cast5",
     "decrypt": "decrypt config.js.cast5 config.js"
   },
