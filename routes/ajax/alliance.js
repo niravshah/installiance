@@ -25,7 +25,7 @@ module.exports = function (app, passport) {
 
     app.get('/api/alliances/:id', passport.authenticate('jwt'), function (req, res) {
 
-        Alliance.findOne({ allianceId: req.params.id }, function (err, alliance) {
+        Alliance.findOne({ allianceId: req.params.id }).populate('members').exec( function (err, alliance) {
             if (err) {
                 console.log('Error', err);
                 res.status(500).json({ error: err })
