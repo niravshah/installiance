@@ -32,6 +32,7 @@ $(function () {
 
                         })
                         .fadeIn(1000,function(){
+                            $('#message').append("<br/>");
                             $('#message').append("<a href='/login' class='btn btn-raised btn-primary md-mt-20'>Login</a>")
                         });
                 },
