@@ -159,6 +159,7 @@ module.exports = function (app, config) {
     }
 
     function isUserInfluencerCb(res, result, media,state) {
+        console.log("!!! isUserInfluencerCb", state);
         if (result === true) {
             console.log("Returning Successful");
             res.render('instagram/successful', {medias: media, state:state});
