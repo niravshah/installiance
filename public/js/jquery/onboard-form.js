@@ -16,6 +16,7 @@ $(function () {
         // in the "action" attribute of the form when valid
         submitHandler: function (form) {
             var shortid = $('#onboard-btn').data('shortid');
+            var state = $('#onboard-btn').data('state');
             var url = '/api/user/' + shortid + '/email';
             $.ajax({
                 type: "POST",
