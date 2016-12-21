@@ -27,9 +27,21 @@
                     <ul class="dropdown-menu">
                         <li><a ui-sref="new-alliance">Create New</a></li>
                         <li class="divider"></li>
-                        <li ng-repeat="alliance in alliances"><a ui-sref="existing-alliance({allianceId:alliance.allianceId})">{[{alliance.name}]}</a></li>
+                        <li ng-repeat="alliance in alliances"><a ui-sref="existing-alliance({allianceId:alliance.allianceId})">{[{campaign.name}]}</a></li>
                     </ul>
                 </li>
+                <li class="dropdown">
+                    <a href="#" data-target="dropdown-menu" class="dropdown-toggle" data-toggle="dropdown">Campaigns
+                        <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a ui-sref="new-campaign">Create New</a></li>
+                        <li class="divider"></li>
+                        <li ng-repeat="campaign in campaigns"><a ui-sref="existing-campaign({campaignId:campaign.campaignId})">{[{campaign.name}]}</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="javascript:void(0)">Logout</a></li>
             </ul>
         </div>
     </div>
@@ -63,4 +75,7 @@
 <script src="/js/angular/controllers/homeController.js"></script>
 <script src="/js/angular/controllers/alliances/new.js"></script>
 <script src="/js/angular/controllers/alliances/existing.js"></script>
+<script src="/js/angular/controllers/campaigns/new.js"></script>
+<script src="/js/angular/controllers/campaigns/existing.js"></script>
+
 {% endblock%}

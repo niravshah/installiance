@@ -19,6 +19,16 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider,jw
             url:'/alliances/:allianceId',
             templateUrl: '/js/angular/partials/alliances/existing.html',
             controller: 'existingAllianceController'
+        })
+        .state('new-campaign',{
+            url:'/campaigns/new',
+            templateUrl: '/js/angular/partials/campaigns/new.html',
+            controller: 'campaignController'
+        })
+        .state('existing-campaign',{
+            url:'/campaigns/:campaignId',
+            templateUrl: '/js/angular/partials/campaigns/existing.html',
+            controller: 'existingCampaignController'
         });
 
     jwtInterceptorProvider.tokenGetter = function () {
