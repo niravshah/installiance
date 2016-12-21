@@ -37,4 +37,9 @@ module.exports = function (app, passport) {
 
     });
 
+    app.post('/api/alliances/:aid/allies/add/:uid', function (req, res) {
+        console.log("Adding user " + req.params.uid + " to alliance " + req.params.aid);
+        res.json({ message: "User Added" });
+    })
+
 };

@@ -8,9 +8,9 @@ var shortid = require('shortid');
 module.exports = function (app, config) {
 
     ig.use({
-               client_id: 'e942353eeb2f4c4eb38d5ce059ee5b35',
-               client_secret: '54fc1a4b2b8e45a6a04016657b03bfa6'
-           });
+        client_id: 'e942353eeb2f4c4eb38d5ce059ee5b35',
+        client_secret: '54fc1a4b2b8e45a6a04016657b03bfa6'
+    });
 
     var redirect_uri = 'https://allyx.herokuapp.com/welcome';
 
@@ -32,51 +32,51 @@ module.exports = function (app, config) {
             } else {
                 //console.log('Yay! Access token is ' + result.access_token);
                 async.parallel([
-                                   function (cb) {
-                                       ig.user_self({access_token: result.access_token},
-                                                    function (err, userInfo, pagination, remaining,
-                                                              limit) {
-                                                        console.log('Error', err);
-                                                        //console.log('Self', userInfo);
-                                                        //console.log(pagination, remaining, limit);
-                                                        cb(err, userInfo);
-                                                    });
-                                   },
-                                   function (cb) {
-                                       ig.user_self_media_recent({},
-                                                                 {access_token: result.access_token},
-                                                                 function (err, userInfo,
-                                                                           pagination, remaining,
-                                                                           limit) {
-                                                                     console.log('Error', err);
-                                                                     //console.log('Self',
-                                                                     // userInfo);
-                                                                     // console.log(pagination,
-                                                                     // remaining, limit);
-                                                                     cb(err, userInfo);
-                                                                 });
-                                   }],
-                               function (err, results) {
-                                   if (err) {
-                                       console.log("Error Loop");
-                                       res.render('error',
-                                                  {
-                                                      message: 'There was an error retrieving your details from Instagram',
-                                                      details: err
-                                                  })
-                                   }
-                                   if (results.length < 2) {
-                                       res.render('error',
-                                                  {
-                                                      message: 'We could not retrieve all your details from Instagram',
-                                                      details: ''
-                                                  })
-                                   } else {
-                                       isUserInfluencer(results, function (result, media) {
-                                           isUserInfluencerCb(res, result, media, req.query.state)
-                                       });
-                                   }
-                               });
+                        function (cb) {
+                            ig.user_self({ access_token: result.access_token },
+                                function (err, userInfo, pagination, remaining,
+                                          limit) {
+                                    console.log('Error', err);
+                                    //console.log('Self', userInfo);
+                                    //console.log(pagination, remaining, limit);
+                                    cb(err, userInfo);
+                                });
+                        },
+                        function (cb) {
+                            ig.user_self_media_recent({},
+                                { access_token: result.access_token },
+                                function (err, userInfo,
+                                          pagination, remaining,
+                                          limit) {
+                                    console.log('Error', err);
+                                    //console.log('Self',
+                                    // userInfo);
+                                    // console.log(pagination,
+                                    // remaining, limit);
+                                    cb(err, userInfo);
+                                });
+                        }],
+                    function (err, results) {
+                        if (err) {
+                            console.log("Error Loop");
+                            res.render('error',
+                                {
+                                    message: 'There was an error retrieving your details from Instagram',
+                                    details: err
+                                })
+                        }
+                        if (results.length < 2) {
+                            res.render('error',
+                                {
+                                    message: 'We could not retrieve all your details from Instagram',
+                                    details: ''
+                                })
+                        } else {
+                            isUserInfluencer(results, function (result, media) {
+                                isUserInfluencerCb(res, result, media, req.query.state)
+                            });
+                        }
+                    });
             }
         });
     });
@@ -87,7 +87,7 @@ module.exports = function (app, config) {
             isUserInfluencerCb(res, result, media)
         });
     });
-    
+
     function isUserInfluencer(results, cb) {
         var follows = results[0].counts.follows;
         var followed_by = results[0].counts.followed_by;
@@ -158,11 +158,11 @@ module.exports = function (app, config) {
         });
     }
 
-    function isUserInfluencerCb(res, result, media,state) {
+    function isUserInfluencerCb(res, result, media, state) {
         console.log("!!! isUserInfluencerCb", state);
         if (result === true) {
             console.log("Returning Successful");
-            res.render('instagram/successful', {medias: media, state:state});
+            res.render('instagram/successful', { medias: media, state: state });
         } else {
             console.log("Returning Unsuccessful");
             res.render('instagram/unsuccessful');
