@@ -8,7 +8,8 @@ var userSchema = new Schema({
     password: { type: String, required: true},
     resetPassword: { type: Boolean, default: true },
     emailNeedsVerification: { type: Boolean, default: true },
-    emailVerificationToken:{ type: String, default:generatePassword(30,false)}
+    emailVerificationToken:{ type: String, default:generatePassword(30,false)},
+    type:{type: String, enum:['influencer','brand'], required: true, default:'influencer'}
 });
 
 module.exports = mongoose.model('User', userSchema);    

@@ -7,10 +7,10 @@ var campaignSchema = new Schema({
     name: { type: String, required: true },
     area: { type: String, required: true },
     description: { type: String },
-    description: { type: bounty },
+    bounty: { type: String },
     joinToken: { type: String, required: true },
     tags: { type: Schema.Types.Mixed, default: true },
-    members: { type: [Schema.Types.ObjectId], default: [] }
+    participants: { type: [Schema.Types.ObjectId], default: [] }
 });
 
 module.exports = mongoose.model('Campaign', campaignSchema);

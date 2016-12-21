@@ -16,6 +16,22 @@ module.exports = function (app, passport) {
                 res.json({ campaign: campaign })
             }
         });
+    });
+
+    app.get('/api/campaigns/:id', passport.authenticate('jwt'), function (req, res) {
+
+        Campaign.findOne({ campaignId: req.params.id }, function (err, campaign) {
+            if (err) {
+                console.log('Error', err);
+                res.status(500).json({ error: err })
+            } else {
+                if (campaign) {
+                    res.json(campaign);
+                } else {
+                    res.status(400).json({ error: 'Could not find the alliance' })
+                }
+            }
+        })
 
     });
 };
