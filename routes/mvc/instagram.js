@@ -14,10 +14,10 @@ module.exports = function (app, config) {
 
     var redirect_uri = 'https://allyx.herokuapp.com/welcome';
 
-    app.get('/authorize_user', function (req, res) {
+    app.get('/authorize_user/:state', function (req, res) {
         res.redirect(ig.get_authorization_url(redirect_uri, {
             scope: ['basic', 'follower_list'],
-            state: 'a state'
+            state: req.params.state
         }));
     });
 
@@ -30,8 +30,7 @@ module.exports = function (app, config) {
                     details: err.body
                 })
             } else {
-                console.log('Yay! Access token is ' + result.access_token);
-
+                //console.log('Yay! Access token is ' + result.access_token);
                 async.parallel([
                                    function (cb) {
                                        ig.user_self({access_token: result.access_token},
@@ -74,7 +73,7 @@ module.exports = function (app, config) {
                                                   })
                                    } else {
                                        isUserInfluencer(results, function (result, media) {
-                                           isUserInfluencerCb(res, result, media)
+                                           isUserInfluencerCb(res, result, media, req.query.state)
                                        });
                                    }
                                });
@@ -159,10 +158,10 @@ module.exports = function (app, config) {
         });
     }
 
-    function isUserInfluencerCb(res, result, media) {
+    function isUserInfluencerCb(res, result, media,state) {
         if (result === true) {
             console.log("Returning Successful");
-            res.render('instagram/successful', {medias: media});
+            res.render('instagram/successful', {medias: media, state:state});
         } else {
             console.log("Returning Unsuccessful");
             res.render('instagram/unsuccessful');
