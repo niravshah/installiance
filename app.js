@@ -20,14 +20,14 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 var swig = require('swig');
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('view cache', false);
-swig.setDefaults({cache: false});
+swig.setDefaults({ cache: false });
 
 var logger = require('morgan');
 app.use(logger('dev'));
@@ -39,14 +39,15 @@ var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
 
 require('./routes/passport/init')(passport);
+
 require('./routes/mvc/instagram')(app, config);
 require('./routes/mvc/login')(app, bcrypt, salt);
-require('./routes/ajax/user')(app, config, bcrypt, salt);
 require('./routes/mvc/user')(app);
+require('./routes/mvc/home')(app, passport);
+require('./routes/mvc/alliance')(app);
 
 require('./routes/ajax/refdata')(app);
-
-require('./routes/mvc/home')(app, passport);
+require('./routes/ajax/user')(app, config, bcrypt, salt);
 require('./routes/ajax/stats')(app, passport);
 require('./routes/ajax/alliance')(app, passport);
 
@@ -61,18 +62,18 @@ if (env === 'dev') {
     app.use(function (err, req, res, next) {
         res.status(err.status || 500);
         res.json({
-                     message: "Error Response",
-                     errorMessage: err.message,
-                     error: err
-                 });
+            message: "Error Response",
+            errorMessage: err.message,
+            error: err
+        });
     });
 } else {
     app.use(function (err, req, res, next) {
         res.status(err.status || 500);
         res.json({
-                     message: "Error Response",
-                     errorMessage: err.message
-                 });
+            message: "Error Response",
+            errorMessage: err.message
+        });
     });
 }
 
