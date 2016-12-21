@@ -1,4 +1,4 @@
-app.controller('allianceController', function ($http, $scope, notify, $window) {
+app.controller('allianceController', function ($http, $scope, notify, $window, $state) {
 
     $scope.tags;
     $scope.area;
@@ -24,11 +24,12 @@ app.controller('allianceController', function ($http, $scope, notify, $window) {
 
     $scope.createAlliance = function () {
         console.log('Create', $scope.name, $scope.area, $scope.tags);
-        var postData = { name: $scope.name, area: $scope.area, tags: $scope.tags, description: $scope.description};
+        var postData = { name: $scope.name, area: $scope.area, tags: $scope.tags, description: $scope.description };
         $http.post("/api/alliances/new", postData).then(function (response) {
             notify('Created New Alliance.');
-            var newAllianceUrl = '#/alliances/' + response.data.alliance.allianceId;
-            $window.location.href = newAllianceUrl;
+            $state.go('existing-alliance', { allianceId: response.data.alliance.allianceId });
+            //var newAllianceUrl = '#/alliances/' + response.data.alliance.allianceId;
+            //$window.location.href = newAllianceUrl;
         }, function (error) {
             notify('Could not create new Alliance');
             console.log(error);
