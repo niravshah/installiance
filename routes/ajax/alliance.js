@@ -13,9 +13,6 @@ module.exports = function (app, passport) {
         alliance.members = [];
         alliance.members.push(req.user._id);
 
-        var matches = req.body.name.match(/\b(\w)/g);
-        alliance.initials =matches.join('');
-
         new Alliance(alliance).save(function (err, alliance) {
             if (err) {
                 console.log('Error', err);

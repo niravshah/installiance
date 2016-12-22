@@ -1,6 +1,5 @@
 app.controller('homeController', function ($http, $scope, $rootScope) {
     $scope.init = function () {
-        console.log('Home Controller');
         $scope.stats;
         $rootScope.alliances=[];
         $rootScope.campaigns=[];
