@@ -81,10 +81,10 @@ module.exports = function (app, config) {
         });
     });
 
-    app.get('/mocktest', function (req, res) {
+    app.get('/mocktest/:state', function (req, res) {
         var results = mocks;
         isUserInfluencer(results, function (result, media) {
-            isUserInfluencerCb(res, result, media,"new")
+            isUserInfluencerCb(res, result, media,req.params.state)
         });
     });
 
