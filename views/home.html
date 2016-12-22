@@ -7,47 +7,37 @@
 
 {% block content %}
 <div ng-app="influenceAllyHome" ng-controller="homeController">
-<div class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target=".navbar-responsive-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="javascript:void(0)"><img src="/images/logo_sm.png"></a>
-        </div>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a ui-sref="dashboard">Dashboard</a></li>
-                <li class="dropdown">
-                    <a href="#" data-target="dropdown-menu" class="dropdown-toggle" data-toggle="dropdown">Alliances
-                        <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a ui-sref="new-alliance">Create New</a></li>
-                        <li class="divider"></li>
-                        <li ng-repeat="alliance in $root.alliances"><a ui-sref="existing-alliance({allianceId:alliance.allianceId})">{[{alliance.name}]}</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" data-target="dropdown-menu" class="dropdown-toggle" data-toggle="dropdown">Campaigns
-                        <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a ui-sref="new-campaign">Create New</a></li>
-                        <li class="divider"></li>
-                        <li ng-repeat="campaign in $root.campaigns"><a ui-sref="existing-campaign({campaignId:campaign.campaignId})">{[{campaign.name}]}</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="javascript:void(0)">Logout</a></li>
-            </ul>
+    <div class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="javascript:void(0)"><img src="/images/logo_sm.png"></a>
+            </div>
+            <div class="navbar-collapse collapse navbar-responsive-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a ui-sref="dashboard">Dashboard</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-target="dropdown-menu" class="dropdown-toggle" data-toggle="dropdown">New
+                            <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a ui-sref="dashboard.new-alliance">Alliance</a></li>
+                            <li><a ui-sref="new-campaign">Campaign</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="javascript:void(0)">Logout</a></li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
-<div class="container" ui-view>
-</div>
+    <div class="container" ui-view>
+    </div>
 </div>
 {% endblock %}
 

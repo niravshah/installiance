@@ -5,32 +5,32 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider, j
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
     $urlRouterProvider.otherwise('/dashboard');
 
+
     $stateProvider
         .state('dashboard', {
             url: '/dashboard',
             templateUrl: '/js/angular/partials/home.html'
         })
-        .state('new-alliance', {
+        .state('dashboard.new-alliance', {
             url: '/alliances/new',
             templateUrl: '/js/angular/partials/alliances/new.html',
             controller: 'allianceController'
         })
-        .state('existing-alliance', {
+        .state('dashboard.alliance', {
             url: '/alliances/:allianceId',
             templateUrl: '/js/angular/partials/alliances/existing.html',
             controller: 'existingAllianceController'
         })
-        .state('new-campaign', {
+        .state('dashboard.new-campaign', {
             url: '/campaigns/new',
             templateUrl: '/js/angular/partials/campaigns/new.html',
             controller: 'campaignController'
         })
-        .state('existing-campaign', {
+        .state('dashboard.campaign', {
             url: '/campaigns/:campaignId',
             templateUrl: '/js/angular/partials/campaigns/existing.html',
             controller: 'existingCampaignController'
         });
-
     jwtInterceptorProvider.tokenGetter = function () {
         return localStorage.getItem('id_token');
     };

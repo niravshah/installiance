@@ -42,11 +42,12 @@
         </button>
     </div>
 </div>
-<div class="row md-mt-20" ng-show="campaign.status=='accept_alliances'">
+
+<div class="row md-mt-20" ng-show="campaign.status==='accept_alliances'">
     <div class="col-md-6">
         <form class="form-horizontal" name="joinCampaignForm" ng-submit="joinCampaign()" novalidate>
-            <selectize placeholder='Pick an Alliance to Join...' options="$root.alliances"
-                       config="{maxItems: 1, labelField: 'name',valueField: 'allianceId'}"
+            <selectize options="$root.alliances"
+                       config="{maxItems: 1, labelField: 'name',valueField: 'allianceId',create:false}"
                        id="joinAlliance" name="joinAlliance" ng-model="joinAlliance" required='true'></selectize>
             <button ng-disabled="joinCampaignForm.$invalid" id="join-btn"
                     class="btn btn-sm btn-raised btn-info">Join Campaign

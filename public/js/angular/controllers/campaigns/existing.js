@@ -1,7 +1,6 @@
-app.controller('existingCampaignController', function ($http, $scope, notify, $stateParams, notify) {
+app.controller('existingCampaignController', function ($http, $scope, notify, $stateParams) {
 
     $scope.campaign;
-
 
     $scope.init = function () {
         $http.get('/api/campaigns/' + $stateParams.campaignId).then(function (response) {
@@ -12,7 +11,6 @@ app.controller('existingCampaignController', function ($http, $scope, notify, $s
             console.log(errorMessage, error);
             notify(errorMessage);
         });
-
     };
 
     $scope.init();
