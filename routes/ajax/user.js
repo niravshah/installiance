@@ -118,7 +118,6 @@ module.exports = function (app, config, bcrypt, salt, passport) {
                 res.status(500).json({error: err})
             } else {
                 if (user) {
-
                     if (user.type == 'brand') {
                         Campaign.find({shortid: req.params.uid}, function (err, alliances) {
                             if (err) {
