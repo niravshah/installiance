@@ -1,7 +1,6 @@
 var Campaign = require('./../../models/campaign');
-var User = require('./../../models/user');
+var Alliance = require('./../../models/alliance');
 var shortid = require('shortid');
-var mongoose = require('mongoose');
 
 module.exports = function (app, passport) {
 
@@ -23,7 +22,7 @@ module.exports = function (app, passport) {
 
     app.get('/api/campaigns/:id', passport.authenticate('jwt'), function (req, res) {
 
-        Campaign.findOne({ campaignId: req.params.id }, function (err, campaign) {
+        Campaign.findOne({ campaignId: req.params.id }).populate('participants').exec(function (err, campaign) {
             if (err) {
                 console.log('Error', err);
                 res.status(500).json({ error: err })
@@ -60,21 +59,21 @@ module.exports = function (app, passport) {
 
     app.post('/api/campaigns/:id/join/:uid', passport.authenticate('jwt'), function (req, res) {
 
-        User.findOne({ shortid: req.params.uid }, function (err, user) {
+        Alliance.findOne({ allianceId: req.params.uid }, function (err, alliance) {
             if (err) {
                 res.status(500).json({ error: err })
             } else {
-                if (user) {
+                if (alliance) {
                     if (err) {
                         res.status(500).json({ error: err })
                     } else {
-                        Campaign.update({ campaignId: req.params.id }, { $push: { participants: user._id } }, {}, function (err, numAffected) {
+                        Campaign.update({ campaignId: req.params.id }, { $push: { participants: alliance._id } }, {}, function (err, numAffected) {
                             if (err) {
                                 console.log('Error', err);
                                 res.status(500).json(err);
                             } else {
                                 if (numAffected.n > 0) {
-                                    Campaign.findOne({ campaignId: req.params.id }, function (err, campaign) {
+                                    Campaign.findOne({ campaignId: req.params.id }).populate('participants').exec(function (err, campaign) {
                                         if (err) {
                                             res.status(500).json({ error: err })
                                         } else {
@@ -89,7 +88,7 @@ module.exports = function (app, passport) {
                     }
 
                 } else {
-                    res.status(400).json({ error: 'Could not find the user' })
+                    res.status(400).json({ error: 'Could not find the alliance' })
                 }
             }
         });

@@ -14,6 +14,19 @@
     </div>
 </div>
 <div class="row md-mt-40">
+    <div ng-repeat="member in campaign.participants" class="list-group col-md-4">
+        <div class="list-group-item">
+            <div style="display: inline-block; padding-right: 15px;">
+                <ng-avatar initials="{[{member.initials}]}"></ng-avatar>
+            </div>
+            <div class="row-content">
+                <h4 class="list-group-item-heading">{[{member.name}]}</h4>
+                <p class="list-group-item-text">{[{member.description}]}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row md-mt-40">
     <div class="col-md-6">
         <button ng-click="changeStatus('accept_alliances')" ng-show="campaign.status=='draft'" id="accept-alliance-btn"
                 class="btn btn-sm btn-raised btn-info">Accept Alliances
@@ -32,11 +45,12 @@
 <div class="row md-mt-20" ng-show="campaign.status=='accept_alliances'">
     <div class="col-md-6">
         <form class="form-horizontal" name="joinCampaignForm" ng-submit="joinCampaign()" novalidate>
-        <selectize placeholder='Pick an Alliance to Join...' options="$root.alliances" config="{maxItems: 1, labelField: 'name',valueField: 'allianceId'}"
-                   id="joinAlliance" name="joinAlliance" ng-model="joinAlliance" required='true'></selectize>
-        <button ng-disabled="joinCampaignForm.$invalid"  id="join-btn"
-                class="btn btn-sm btn-raised btn-info">Join Campaign
-        </button>
-            </form>
+            <selectize placeholder='Pick an Alliance to Join...' options="$root.alliances"
+                       config="{maxItems: 1, labelField: 'name',valueField: 'allianceId'}"
+                       id="joinAlliance" name="joinAlliance" ng-model="joinAlliance" required='true'></selectize>
+            <button ng-disabled="joinCampaignForm.$invalid" id="join-btn"
+                    class="btn btn-sm btn-raised btn-info">Join Campaign
+            </button>
+        </form>
     </div>
 </div>

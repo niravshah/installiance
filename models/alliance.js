@@ -5,6 +5,7 @@ var allianceSchema = new Schema({
     shortid: { type: String, required: true },
     allianceId: { type: String, required: true },
     name: { type: String, required: true },
+    initials: { type: String, required: true },
     area: { type: String, required: true },
     description: { type: String },
     joinToken: { type: String, required: true },

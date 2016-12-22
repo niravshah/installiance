@@ -1,4 +1,4 @@
-var app = angular.module('influenceAllyHome', ['ui.router','selectize','cgNotify','angular-jwt']);
+var app = angular.module('influenceAllyHome', ['ui.router','selectize','cgNotify','angular-jwt','ngAvatar']);
 
 app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider,jwtInterceptorProvider,$httpProvider) {
 
@@ -6,7 +6,7 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider,jw
     $urlRouterProvider.otherwise('/dashboard');
 
     $stateProvider
-        .state('dashboard', {
+        .state('dashboard', {   
             url: '/dashboard',
             templateUrl: '/js/angular/partials/home.html'
         })

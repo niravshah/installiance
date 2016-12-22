@@ -10,7 +10,7 @@ var campaignSchema = new Schema({
     bounty: { type: String },
     joinToken: { type: String, required: true },
     tags: { type: Schema.Types.Mixed, default: true },
-    participants: [{type: Schema.Types.ObjectId,ref:'User'}],
+    participants: [{type: Schema.Types.ObjectId,ref:'Alliance'}],
     status:{type: String, enum:['live','over','draft','accepting_alliances'], required: true, default:'draft'}
 });
 

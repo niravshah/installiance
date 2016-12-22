@@ -1,4 +1,4 @@
-app.controller('existingCampaignController', function ($http, $scope, notify, $stateParams, $rootScope) {
+app.controller('existingCampaignController', function ($http, $scope, notify, $stateParams, notify) {
 
     $scope.campaign;
 
@@ -7,7 +7,6 @@ app.controller('existingCampaignController', function ($http, $scope, notify, $s
         $http.get('/api/campaigns/' + $stateParams.campaignId).then(function (response) {
             $scope.campaign = response.data;
             $scope.joinUrl = '/campaigns/' + response.data.campaignId + '/join/' + response.data.joinToken;
-
         }, function (error) {
             var errorMessage = "Could not find the alliance with id: " + $stateParams.allianceId;
             console.log(errorMessage, error);
@@ -29,9 +28,10 @@ app.controller('existingCampaignController', function ($http, $scope, notify, $s
     };
 
     $scope.joinCampaign = function () {
-        var url = '/api/campaigns/' + $scope.campaign.campaignId + '/join/' + $rootScope.currentUserId;
+        var url = '/api/campaigns/' + $scope.campaign.campaignId + '/join/' + $scope.joinAlliance;
         console.log('Join Campaign', url);
         $http.post(url).then(function (response) {
+            notify('Alliance added to the Campaign');
             $scope.campaign = response.data;
         }, function (error) {
             console.log('Error', error);
