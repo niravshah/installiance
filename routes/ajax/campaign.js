@@ -10,6 +10,7 @@ module.exports = function (app, passport) {
         campaign.shortid = req.user.shortid;
         campaign.campaignId = shortid.generate();
         campaign.joinToken = shortid.generate();
+        campaign.participants = [];
         new Campaign(campaign).save(function (err, campaign) {
             if (err) {
                 console.log('Error', err);
@@ -64,20 +65,29 @@ module.exports = function (app, passport) {
                 res.status(500).json({ error: err })
             } else {
                 if (user) {
-                    Campaign.findOne({ campaignId: req.params.id }, function (err, campaign) {
-                        if (err) {
-                            res.status(500).json({ error: err })
-                        } else {
-                            if (campaign) {
-                                campaign.participants.push(user._id);
-                                campaign.save(function (err) {
-                                    res.json(campaign);
-                                })
+                    if (err) {
+                        res.status(500).json({ error: err })
+                    } else {
+                        Campaign.update({ campaignId: req.params.id }, { $push: { participants: user._id } }, {}, function (err, numAffected) {
+                            if (err) {
+                                console.log('Error', err);
+                                res.status(500).json(err);
                             } else {
-                                res.status(400).json({ error: 'Could not find the campaign' })
+                                if (numAffected.n > 0) {
+                                    Campaign.findOne({ campaignId: req.params.id }, function (err, campaign) {
+                                        if (err) {
+                                            res.status(500).json({ error: err })
+                                        } else {
+                                            res.json(campaign);
+                                        }
+                                    });
+                                } else {
+                                    res.status(400).json({ error: 'Could not find the campaign' })
+                                }
                             }
-                        }
-                    })
+                        });
+                    }
+
                 } else {
                     res.status(400).json({ error: 'Could not find the user' })
                 }

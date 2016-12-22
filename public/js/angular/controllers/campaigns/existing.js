@@ -1,5 +1,7 @@
 app.controller('existingCampaignController', function ($http, $scope, notify, $stateParams, $rootScope) {
+
     $scope.campaign;
+
 
     $scope.init = function () {
         $http.get('/api/campaigns/' + $stateParams.campaignId).then(function (response) {
@@ -11,6 +13,7 @@ app.controller('existingCampaignController', function ($http, $scope, notify, $s
             console.log(errorMessage, error);
             notify(errorMessage);
         });
+
     };
 
     $scope.init();
@@ -28,10 +31,9 @@ app.controller('existingCampaignController', function ($http, $scope, notify, $s
     $scope.joinCampaign = function () {
         var url = '/api/campaigns/' + $scope.campaign.campaignId + '/join/' + $rootScope.currentUserId;
         console.log('Join Campaign', url);
-        $http.post(url).then(function(response){
-            //console.log('Response', response);
+        $http.post(url).then(function (response) {
             $scope.campaign = response.data;
-        },function(error){
+        }, function (error) {
             console.log('Error', error);
         });
     }

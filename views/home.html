@@ -27,7 +27,7 @@
                     <ul class="dropdown-menu">
                         <li><a ui-sref="new-alliance">Create New</a></li>
                         <li class="divider"></li>
-                        <li ng-repeat="alliance in alliances"><a ui-sref="existing-alliance({allianceId:alliance.allianceId})">{[{alliance.name}]}</a></li>
+                        <li ng-repeat="alliance in $root.alliances"><a ui-sref="existing-alliance({allianceId:alliance.allianceId})">{[{alliance.name}]}</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -36,7 +36,7 @@
                     <ul class="dropdown-menu">
                         <li><a ui-sref="new-campaign">Create New</a></li>
                         <li class="divider"></li>
-                        <li ng-repeat="campaign in campaigns"><a ui-sref="existing-campaign({campaignId:campaign.campaignId})">{[{campaign.name}]}</a></li>
+                        <li ng-repeat="campaign in $root.campaigns"><a ui-sref="existing-campaign({campaignId:campaign.campaignId})">{[{campaign.name}]}</a></li>
                     </ul>
                 </li>
             </ul>
