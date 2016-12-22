@@ -1,11 +1,11 @@
 <div class="md-mt-20 right-panel">
     <div class="row">
         <div class="col-md-6">
-            <h3>{[{campaign.name}]}</h3>
+            <h2>{[{campaign.name}]}</h2>
         </div>
     </div>
     <div class="row md-mb-10">
-        <div class="col-md-6">
+        <div class="col-md-6 tags-container">
             <span class="iaTags" ng-repeat="tag in campaign.tags">{[{tag}]}</span>
         </div>
     </div>
@@ -15,14 +15,19 @@
         </div>
     </div>
     <div class="row md-mt-40">
-        <div ng-repeat="member in campaign.participants" class="list-group col-md-4">
-            <div class="list-group-item">
-                <div style="display: inline-block; padding-right: 15px;">
-                    <ng-avatar initials="{[{member.initials}]}"></ng-avatar>
-                </div>
-                <div class="row-content">
-                    <h4 class="list-group-item-heading">{[{member.name}]}</h4>
-                    <p class="list-group-item-text">{[{member.description}]}</p>
+        <div class="col-md-12">
+            <div class="md-mb-40">
+                <h4>Participating Alliances</h4>
+            </div>
+            <div ng-repeat="member in campaign.participants" class="list-group row">
+                <div class="list-group-item">
+                    <div style="display: inline-block; padding-right: 15px;">
+                        <ng-avatar initials="{[{member.name|initials}]}"></ng-avatar>
+                    </div>
+                    <div class="row-content">
+                        <h4 class="list-group-item-heading">{[{member.name}]}</h4>
+                        <p class="list-group-item-text">{[{member.description}]}</p>
+                    </div>
                 </div>
             </div>
         </div>

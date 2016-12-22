@@ -54,3 +54,5 @@
     color: #FFFFFF;
     font-size: small;
 }
+
+.tags-container > :first-child {margin-left:0px;}
