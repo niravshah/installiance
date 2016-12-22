@@ -1,8 +1,9 @@
-app.controller('existingCampaignController', function ($http, $scope, notify, $stateParams) {
+app.controller('existingCampaignController', function ($http, $scope, notify, $stateParams, $rootScope) {
 
     $scope.campaign;
-
+    $scope.allianceOptions = [];
     $scope.init = function () {
+        angular.copy($rootScope.alliances,$scope.allianceOptions);
         $http.get('/api/campaigns/' + $stateParams.campaignId).then(function (response) {
             $scope.campaign = response.data;
             $scope.joinUrl = '/campaigns/' + response.data.campaignId + '/join/' + response.data.joinToken;
