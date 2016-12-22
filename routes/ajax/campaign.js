@@ -69,7 +69,7 @@ module.exports = function (app, passport) {
                             res.status(500).json({ error: err })
                         } else {
                             if (campaign) {
-                                campaign.participants.push(new mongoose.Types.ObjectId(user._id));
+                                campaign.participants.push(user._id);
                                 campaign.save(function (err) {
                                     res.json(campaign);
                                 })
