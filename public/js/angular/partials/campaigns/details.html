@@ -34,11 +34,17 @@
     </div>
     <div class="row md-mt-40">
         <div class="col-md-6">
+            <pre>{[{tagInfo}]}</pre>
+        </div>
+    </div>
+    <div class="row md-mt-40">
+        <div class="col-md-6">
             <button ng-click="changeStatus('accept_alliances')" ng-show="campaign.status=='draft'"
                     id="accept-alliance-btn"
                     class="btn btn-sm btn-raised btn-info">Accept Alliances
             </button>
-            <button ng-click="changeStatus('live')" ng-show="campaign.status=='accept_alliances'" id="go-live-btn"
+            <button ng-click="changeStatus('live')" ng-show="campaign.status=='accept_alliances'"
+                    id="go-live-btn"
                     class="btn btn-sm btn-raised btn-success">Go Live
             </button>
             <button ng-click="changeStatus('draft')"
@@ -53,10 +59,12 @@
 
     <div class="row md-mt-20" ng-show="campaign.status==='accept_alliances'">
         <div class="col-md-6">
-            <form class="form-horizontal" name="joinCampaignForm" ng-submit="joinCampaign()" novalidate>
+            <form class="form-horizontal" name="joinCampaignForm" ng-submit="joinCampaign()"
+                  novalidate>
                 <selectize options="allianceOptions"
                            config="{maxItems: 1, labelField: 'name',valueField: 'allianceId',create:false}"
-                           id="joinAlliance" name="joinAlliance" ng-model="joinAlliance" required='true'></selectize>
+                           id="joinAlliance" name="joinAlliance" ng-model="joinAlliance"
+                           required='true'></selectize>
                 <button ng-disabled="joinCampaignForm.$invalid" id="join-btn"
                         class="btn btn-sm btn-raised btn-info">Join Campaign
                 </button>

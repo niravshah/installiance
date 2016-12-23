@@ -2,6 +2,7 @@ app.controller('detailsCampaignController', function ($http, $scope, notify, $ro
 
     $scope.campaign;
     $scope.allianceOptions = [];
+    $scope.tagInfo=[];
     $scope.init = function () {
         angular.copy($rootScope.alliances,$scope.allianceOptions);
         $http.get('/api/campaigns/' + $stateParams.campaignId).then(function (response) {
@@ -21,13 +22,18 @@ app.controller('detailsCampaignController', function ($http, $scope, notify, $ro
 
     $scope.getTagInfo = function(){
 
-        var trackingTag = $scope.campaign.tags[0];
-        var tagUrl = '/api/campaign/' + $scope.campaign.campaignId + '/tags/' + trackingTag;
-        $http.get(tagUrl).then(function(response){
-            $scope.tagInfo = response.data;
-        },function(error){
-            console.log(error);
+        $scope.campaign.tags.forEach(function(tag){
+            var trackingTag = tag.replace('#','');
+            var tagUrl = '/api/campaign/' + $scope.campaign.campaignId + '/tags/' + trackingTag;
+
+            $http.get(tagUrl).then(function(response){
+                $scope.tagInfo.push(response.data);
+            },function(error){
+                console.log(error);
+            });
+
         });
+
 
     };
 
