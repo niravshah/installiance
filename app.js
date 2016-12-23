@@ -38,9 +38,13 @@ app.use(passport.initialize());
 var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
 
+var ig = require('instagramapi').instagram();
+ig.use({client_id: 'e942353eeb2f4c4eb38d5ce059ee5b35', client_secret: '54fc1a4b2b8e45a6a04016657b03bfa6'});
+
+
 require('./routes/passport/init')(passport);
 
-require('./routes/mvc/instagram')(app, config);
+require('./routes/mvc/instagram')(app, config, ig);
 require('./routes/mvc/login')(app, bcrypt, salt);
 require('./routes/mvc/user')(app);
 require('./routes/mvc/home')(app, passport);
@@ -50,7 +54,7 @@ require('./routes/ajax/refdata')(app);
 require('./routes/ajax/user')(app, config, bcrypt, salt,passport);
 require('./routes/ajax/stats')(app, passport);
 require('./routes/ajax/alliance')(app, passport);
-require('./routes/ajax/campaign')(app, passport);
+require('./routes/ajax/campaign')(app, passport,ig);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

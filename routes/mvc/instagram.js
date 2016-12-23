@@ -1,16 +1,11 @@
 var _ = require('lodash');
 var async = require('async');
-var ig = require('instagramapi').instagram();
 var mocks = require('./../../mocks');
 var Stats = require('./../../models/user_stats');
 var shortid = require('shortid');
 
-module.exports = function (app, config) {
+module.exports = function (app, config, ig) {
 
-    ig.use({
-        client_id: 'e942353eeb2f4c4eb38d5ce059ee5b35',
-        client_secret: '54fc1a4b2b8e45a6a04016657b03bfa6'
-    });
 
     var redirect_uri = 'http://influenceally.com/welcome';
 

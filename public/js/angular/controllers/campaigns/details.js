@@ -7,6 +7,9 @@ app.controller('detailsCampaignController', function ($http, $scope, notify, $ro
         $http.get('/api/campaigns/' + $stateParams.campaignId).then(function (response) {
             $scope.campaign = response.data;
             $scope.joinUrl = '/campaigns/' + response.data.campaignId + '/join/' + response.data.joinToken;
+
+            $scope.getTagInfo()
+
         }, function (error) {
             var errorMessage = "Could not find the alliance with id: " + $stateParams.allianceId;
             console.log(errorMessage, error);
@@ -15,6 +18,18 @@ app.controller('detailsCampaignController', function ($http, $scope, notify, $ro
     };
 
     $scope.init();
+
+    $scope.getTagInfo = function(){
+
+        var trackingTag = $scope.campaign.tags[0];
+        var tagUrl = '/api/campaign/' + $scope.campaign.campaignId + '/tags/' + trackingTag;
+        $http.get(tagUrl).then(function(response){
+            $scope.tagInfo = response.data;
+        },function(error){
+            console.log(error);
+        });
+
+    };
 
     $scope.changeStatus = function (status) {
         $http.post('/api/campaigns/' + $scope.campaign.campaignId + '/status/' + status).then(function (response) {

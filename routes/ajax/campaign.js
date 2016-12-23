@@ -94,4 +94,8 @@ module.exports = function (app, passport) {
         });
 
     });
+    
+    app.get('/api/campaign/:id/tags/:tag',function(req,resp){
+        
+    });
 };
