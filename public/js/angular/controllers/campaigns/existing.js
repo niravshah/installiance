@@ -1,9 +1,7 @@
 app.controller('existingCampaignController', function ($http, $scope, notify, $stateParams, $rootScope) {
 
     $scope.campaign;
-    $scope.allianceOptions = [];
     $scope.init = function () {
-        angular.copy($rootScope.alliances,$scope.allianceOptions);
         $http.get('/api/campaigns/' + $stateParams.campaignId).then(function (response) {
             $scope.campaign = response.data;
             $scope.joinUrl = '/campaigns/' + response.data.campaignId + '/join/' + response.data.joinToken;
@@ -16,24 +14,4 @@ app.controller('existingCampaignController', function ($http, $scope, notify, $s
 
     $scope.init();
 
-    $scope.changeStatus = function (status) {
-        console.log(status);
-        $http.post('/api/campaigns/' + $scope.campaign.campaignId + '/status/' + status).then(function (response) {
-            //console.log('Response', response);
-            $scope.campaign = response.data;
-        }, function (error) {
-            console.log('Error', error);
-        });
-    };
-
-    $scope.joinCampaign = function () {
-        var url = '/api/campaigns/' + $scope.campaign.campaignId + '/join/' + $scope.joinAlliance;
-        console.log('Join Campaign', url);
-        $http.post(url).then(function (response) {
-            notify('Alliance added to the Campaign');
-            $scope.campaign = response.data;
-        }, function (error) {
-            console.log('Error', error);
-        });
-    }
 });

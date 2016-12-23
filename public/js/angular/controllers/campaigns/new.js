@@ -32,8 +32,8 @@ app.controller('campaignController', function ($http, $scope, notify, $window, $
         };
         $http.post("/api/campaigns/new", postData).then(function (response) {
             notify('Created New Campaign.');
-            $state.go('existing-campaign', { campaignId: response.data.campaign.campaignId });
-
+            $scope.$emit('load-campaigns');
+            $state.go('dashboard');
         }, function (error) {
             notify('Could not create new Campaign');
             console.log(error);

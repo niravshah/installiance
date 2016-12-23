@@ -6,7 +6,6 @@ app.controller('allianceController', function ($http, $scope, notify, $window, $
     $scope.areaOptions = [];
 
     $scope.init = function () {
-
         $http.get('/api/ref-data/options/areas').then(function (response) {
             $scope.areaOptions = response.data.map(function (x) {
                 return { item: x };
@@ -23,11 +22,11 @@ app.controller('allianceController', function ($http, $scope, notify, $window, $
     $scope.init();
 
     $scope.createAlliance = function () {
-        console.log('Create', $scope.name, $scope.area, $scope.tags);
         var postData = { name: $scope.name, area: $scope.area, tags: $scope.tags, description: $scope.description };
         $http.post("/api/alliances/new", postData).then(function (response) {
             notify('Created New Alliance.');
-            $state.go('existing-alliance', { allianceId: response.data.alliance.allianceId });
+            $scope.$emit('load-alliances');
+            $state.go('dashboard');
         }, function (error) {
             notify('Could not create new Alliance');
             console.log(error);

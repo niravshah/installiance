@@ -34,33 +34,9 @@
     </div>
     <div class="row md-mt-40">
         <div class="col-md-6">
-            <button ng-click="changeStatus('accept_alliances')" ng-show="campaign.status=='draft'"
-                    id="accept-alliance-btn"
-                    class="btn btn-sm btn-raised btn-info">Accept Alliances
-            </button>
-            <button ng-click="changeStatus('live')" ng-show="campaign.status=='accept_alliances'" id="go-live-btn"
-                    class="btn btn-sm btn-raised btn-success">Go Live
-            </button>
-            <button ng-click="changeStatus('draft')"
-                    ng-show="campaign.status=='accept_alliances' ||campaign.status=='over'"
-                    id="draft-btn" class="btn btn-sm btn-raised btn-primary">Draft
-            </button>
-            <button ng-click="changeStatus('over')" ng-show="campaign.status=='live'" id="over-btn"
-                    class="btn btn-sm btn-raised btn-danger">Mark Campaign Complete
-            </button>
+            <a ui-sref="campaign-details({campaignId:campaign.campaignId})" class="btn btn-sm btn-raised btn-info">Show Details
+            </a>
         </div>
     </div>
 
-    <div class="row md-mt-20" ng-show="campaign.status==='accept_alliances'">
-        <div class="col-md-6">
-            <form class="form-horizontal" name="joinCampaignForm" ng-submit="joinCampaign()" novalidate>
-                <selectize options="allianceOptions"
-                           config="{maxItems: 1, labelField: 'name',valueField: 'allianceId',create:false}"
-                           id="joinAlliance" name="joinAlliance" ng-model="joinAlliance" required='true'></selectize>
-                <button ng-disabled="joinCampaignForm.$invalid" id="join-btn"
-                        class="btn btn-sm btn-raised btn-info">Join Campaign
-                </button>
-            </form>
-        </div>
-    </div>
 </div>

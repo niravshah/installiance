@@ -8,23 +8,35 @@ app.controller('homeController', function ($http, $scope, $rootScope) {
                 //console.log(response.data);
                 $scope.stats = response.data;
                 $rootScope.currentUserId = response.data.shortid;
-                var allianceUrl = '/api/user/' + response.data.shortid + '/alliances';
-                $http.get(allianceUrl).then(function (response) {
-                    $rootScope.alliances = response.data;
-                }, function (error) {
-                    console.log('Error fetching alliances', error);
-                });
-
-                var campaignsUrl = '/api/user/' + response.data.shortid + '/campaigns';
-                $http.get(campaignsUrl).then(function (response) {
-                    $rootScope.campaigns = response.data;
-                }, function (error) {
-                    console.log('Error fetching campaigns', error);
-                });
-
+                $scope.$emit('load-alliances');
+                $scope.$emit('load-campaigns');
             }
         });
 
     };
     $scope.init();
+
+    $scope.$on('load-campaigns',function(event,data){
+
+        var campaignsUrl = '/api/user/' + $rootScope.currentUserId  + '/campaigns';
+        $http.get(campaignsUrl).then(function (response) {
+            $rootScope.campaigns = response.data;
+        }, function (error) {
+            console.log('Error fetching campaigns', error);
+        });
+
+    });
+
+    $scope.$on('load-alliances',function(event,data){
+
+        var allianceUrl = '/api/user/' + $rootScope.currentUserId + '/alliances';
+        $http.get(allianceUrl).then(function (response) {
+            $rootScope.alliances = response.data;
+        }, function (error) {
+            console.log('Error fetching alliances', error);
+        });
+
+    });
+
+
 });
